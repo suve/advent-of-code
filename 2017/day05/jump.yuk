@@ -1,0 +1,42 @@
+#!/usr/bin/awful
+
+:set &mode i0
+!if :gt i1 :param-cnt 
+	:writeln s'You must provide the mode of operation: "--part1" or "--part2"'
+	:exit
+!elif :eq s'--part1' :param-str i0
+	:set &mode i1
+!elif :eq s'--part2' :param-str i0
+	:set &mode i2
+!else
+	:writeln s'Unknown mode of operation "' (:param-str i0) s'"; must be either "--part1" or "--part2"'
+	:exit
+!fi
+
+
+:set &numbers :arr
+:set &len i0
+
+:set &input i0
+!while :not :stdin-eof
+	:readln &input
+	:set &numbers[&len] $input
+	
+	:add &len i1
+!done
+
+:set &pos i0
+:set &steps i0
+!while :and (:ge &pos i0) (:lt &pos &len)
+	:set &newpos :add $pos $numbers[&pos]
+	
+	!if :or (:eq &mode i1 | :lt &numbers[&pos] i3 )
+		:add &numbers[&pos] i1
+	!else
+		:sub &numbers[&pos] i1
+	!fi
+	
+	:set &pos &newpos
+	:add &steps i1
+!done
+:writeln s'> ' &steps
