@@ -1,0 +1,75 @@
+#!/usr/bin/awful
+
+!fun :seen_before $current
+	:set &h i0
+	:set &hlen :arr-count &history
+	
+	!while :lt &h &hlen
+		!if :eq &current &history[&h]
+			:return :sub &hlen &h
+		!fi
+		
+		:add &h i1
+	!done
+	
+	:return i0
+!nuf
+
+!fun :find_largest_bank
+	:set &largest i0
+	:set &value &membank[&largest]
+	
+	:set &i i1
+	!while :lt &i &banks
+		!if :gt &membank[&i] &value
+			:set &value &membank[&i]
+			:set &largest &i
+		!fi
+		
+		:add &i i1
+	!done
+	
+	:return &largest
+!nuf
+
+:set &banks i0
+:set &membank :arr
+!while :not :stdin-eof
+	:mkint &input
+	:readln &input
+	
+	:set &membank[&banks] &input
+	:add &banks i1
+!done
+
+
+:set &steps i0
+:set &history :arr
+!while i1
+	:set &current :str-implode &membank
+	:set &seen_before :seen_before $current
+	!if &seen_before
+		!break
+	!fi
+	
+	:set &history[:arr-count &history] &current
+	:add &steps i1
+	
+	
+	:set &largest :find_largest_bank
+	:set &redist &membank[&largest]
+	:set &membank[&largest] i0
+	
+	# :writeln s' largest: ' &largest s'; redist: ' &redist
+	
+	:set &position &largest
+	!while &redist
+		:set &position :mod (:add $position i1) &banks
+		
+		:add &membank[&position] i1
+		:sub &redist i1
+	!done
+!done
+
+:writeln s'> cycles: ' &steps
+:writeln s'> loop size: ' &seen_before
