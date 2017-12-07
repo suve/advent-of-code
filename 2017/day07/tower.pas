@@ -8,15 +8,15 @@ Type
 	TProgram = record
 		Name: AnsiString;
 		Weight: NativeInt;
-		Children: NativeInt;
-		Parent: NativeInt
+		Parent: NativeInt;
+		Children: Array of NativeInt;
 	end;
 
 Var
 	Lines: Array of AnsiString;
 	Prog: Array of TProgram;
 
-Procedure SetParent(Const Name: AnsiString; Const ParentIdx: NativeInt);
+Function SetParent(Const Name: AnsiString; Const ParentIdx: NativeInt):NativeInt;
 Var
 	Idx: NativeInt;
 Begin
@@ -24,15 +24,17 @@ Writeln('-- setting parent for "', Name, '"');
 	For Idx:=Low(Prog) to High(Prog) do begin
 		If(Prog[Idx].Name = Name) then begin
 			Prog[Idx].Parent := ParentIdx;
-			Exit()
+			Exit(Idx)
 		end
-	end
+	end;
+	
+	Exit(-1)
 End;
 
 Procedure ParseLine(Const Idx: NativeInt);
 Var
-	Line, Child: AnsiString;
-	P: NativeInt;
+	Line, ChildName: AnsiString;
+	P, ChildrenNo, ChildIdx: NativeInt;
 Begin
 	Line := Lines[Idx];
 	
@@ -47,17 +49,21 @@ Begin
 	P := Pos('>', Line);
 	If(P = 0) then Exit;
 	
+	ChildrenNo := 0;
 	Repeat
 		Delete(Line, 1, P);
 		
 		P := Pos(',', Line);
 		If(P > 0) then
-			Child := Trim(Copy(Line, 1, P-1))
+			ChildName := Trim(Copy(Line, 1, P-1))
 		else
-			Child := Trim(Line);
+			ChildName := Trim(Line);
 		
-		SetParent(Child, Idx);
-		Prog[Idx].Children += 1
+		ChildIdx := SetParent(ChildName, Idx);
+		
+		SetLength(Prog[Idx].Children, ChildrenNo+1);
+		Prog[Idx].Children[ChildrenNo] := ChildIdx;
+		ChildrenNo += 1
 	Until (P=0);
 End;
 
@@ -88,11 +94,47 @@ Begin
 		Prog[Idx].Name := Trim(Copy(Lines[Idx], 1, Parenthesis-1));
 		
 		Prog[Idx].Weight := 0;
-		Prog[Idx].Children := 0;
-		Prog[Idx].Parent := -1
+		Prog[Idx].Parent := -1;
+		SetLength(Prog[Idx].Children, 0)
 	end;
 	
 	For Idx:=0 to Len-1 do ParseLine(Idx);
+End;
+
+Function CalculateWeight(Const Idx: NativeInt):NativeInt;
+Var
+	Ch, chi, Count, Total: NativeInt;
+	Weights: Array of NativeInt;
+	AllEqual: Boolean;
+Begin
+	Count := Length(Prog[Idx].Children);
+	If(Count = 0) then Exit(Prog[Idx].Weight);
+	
+	Total := Prog[Idx].Weight;
+	
+	SetLength(Weights, Count);
+	For Ch := 0 to Count-1 do begin
+		Weights[Ch] := CalculateWeight(Prog[Idx].Children[Ch]);
+		Total += Weights[Ch]
+	end;
+	
+	AllEqual := True;
+	For Ch := 0 to Count-2 do begin
+		For chi := Ch+1 to Count-1 do begin
+			If(Weights[ch] <> Weights[chi]) then begin
+				AllEqual := False;
+				Break; break
+			end
+		end
+	end;
+	If(Not AllEqual) then begin
+		Writeln('-- weights not equal');
+		For Ch := 0 to Count-1 do begin
+			Writeln('  -- ', Prog[Prog[Idx].Children[Ch]].Name, ': ', Weights[Ch], ' (', Prog[Prog[Idx].Children[Ch]].Weight, ')')
+		end;
+	end;
+	
+	Exit(Total)
 End;
 
 Procedure FindRoot();
@@ -101,7 +143,8 @@ Var
 Begin
 	For Idx:=Low(Prog) to High(Prog) do begin
 		If(Prog[Idx].Parent < 0) then begin
-			Writeln(Prog[Idx].Name, '; children: ', Prog[Idx].Children)
+			Writeln(Prog[Idx].Name, '; children: ', Length(Prog[Idx].Children));
+			CalculateWeight(Idx);
 			Exit()
 		end;
 	end;
