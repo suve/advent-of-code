@@ -1,0 +1,63 @@
+#!/usr/bin/awful
+
+:set &register :dict
+:set &highest-ever i0
+
+!fun :check-condition $reg $op $val
+	# Referring an un-set key will yield NIL.
+	# This will either left the register value unchanged,
+	# or set it to 0, if it wasn't yet set.
+	:set &reg-val :mkint &register[&reg]
+	
+	:writeln s':check-condition: ' $reg s', ' $op s', ' $val s'; ' $reg-val
+	
+	!if :eq &op s'=='
+		:return :eq &reg-val &val
+	!elif :eq &op s'!='
+		:return :neq &reg-val &val
+	!elif :eq &op s'<='
+		:return :le &reg-val &val
+	!elif :eq &op s'>='
+		:return :ge &reg-val &val
+	!elif :eq &op s'<'
+		:return :lt &reg-val &val
+	!elif :eq &op s'>'
+		:return :gt &reg-val &val
+	!else
+		:writeln s':check-condition: watafuq? op: ' $op
+		:exit
+	!fi
+!nuf
+
+!fun :change-register $reg $op $val
+	# The same dirty trick as in the :check-condition function.
+	:mkint &register[&reg]
+	
+	:writeln s':change-register: ' $reg s', ' $op s', ' $val s'; ' $register[$reg]
+	
+	!if :eq $op s'inc'
+		:add &register[&reg] &val
+	!elif :eq $op s'dec'
+		:sub &register[&reg] &val
+	!else
+		:writeln s':change-register: watafuq? op: ' $op
+		:exit
+	!fi
+	
+	!if :gt &register[&reg] &highest-ever
+		:set &highest-ever &register[&reg]
+	!fi
+!nuf
+
+:set &line s''
+!while :not :stdin-eof
+	:readln &line
+	:set &parts :str-explode $line s' '
+	
+	!if :check-condition $parts[i4] $parts[i5] $parts[i6]
+		:change-register $parts[i0] $parts[i1] $parts[i2]
+	!fi
+!done
+
+:writeln s'highest now: ' :arr-max :dict-values &register
+:writeln s'highest ever: ' &highest-ever
