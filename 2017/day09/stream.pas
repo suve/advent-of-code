@@ -3,32 +3,41 @@ Program day09; {$MODE OBJFPC} {$COPERATORS ON}
 Var
 	Stream: AnsiString;
 
-Function ProcessGarbage(Idx: NativeInt):NativeInt;
+Procedure ProcessGarbage(Idx: NativeInt; Out EndIdx, CharCount:NativeInt);
 Begin
+	Idx += 1; // Skip the opening '<'
+	CharCount := 0;
+	
 	While (Stream[Idx] <> '>') do begin
-		If(Stream[Idx] = '!') then
+		If(Stream[Idx] = '!') then begin
 			Idx += 2
-		else
+		end else begin
+			CharCount += 1;
 			Idx += 1
+		end
 	end;
-	Result := Idx
+	EndIdx := Idx
 End;
 
-Procedure ProcessGroup(Const StartIdx, Depth: NativeInt; Out EndIdx, TotalDepth:NativeInt);
+Procedure ProcessGroup(Const StartIdx, Depth: NativeInt; Out EndIdx, TotalDepth, GarbageChars:NativeInt);
 Var
-	Idx, DepthSum: NativeInt;
-	subgroup_end, subgroup_depth, garbage_end: NativeInt;
+	Idx, DepthSum, HowMuchGarbage: NativeInt;
+	subgroup_end, subgroup_depth: NativeInt;
+	garbage_end, garbage_count: NativeInt;
 Begin
 	DepthSum := Depth;
+	HowMuchGarbage := 0;
 	
 	Idx := StartIdx+1;
 	While (Stream[Idx] <> '}') do begin
 		If(Stream[Idx] = '{') then begin
-			ProcessGroup(Idx, Depth+1, subgroup_end, subgroup_depth);
+			ProcessGroup(Idx, Depth+1, subgroup_end, subgroup_depth, garbage_count);
+			HowMuchGarbage += garbage_count;
 			DepthSum += subgroup_depth;
 			Idx := subgroup_end + 1
 		end else If(Stream[Idx] = '<') then begin
-			garbage_end := ProcessGarbage(Idx);
+			ProcessGarbage(Idx, garbage_end, garbage_count);
+			HowMuchGarbage += garbage_count;
 			Idx := garbage_end + 1 
 		end else If(Stream[Idx] = ',') then begin
 			Idx += 1
@@ -38,20 +47,21 @@ Begin
 	end;
 	
 	EndIdx := Idx;
-	TotalDepth := DepthSum
+	TotalDepth := DepthSum;
+	GarbageChars := HowMuchGarbage
 End;
 
-Function ProcessInput():NativeInt;
+Procedure ProcessInput();
 Var
-	Ignore, Depth: NativeInt;
+	Ignore, Depth, Garbage: NativeInt;
 Begin
-	ProcessGroup(1, 1, Ignore, Depth);
-	Result := Depth
+	ProcessGroup(1, 1, Ignore, Depth, Garbage);
+	Writeln('-- depth: ', Depth, '; garbage: ', garbage)
 End;
 
 Begin
 	While Not eof() do begin
 		Readln(Stream);
-		Writeln('-- ', ProcessInput)
+		ProcessInput()
 	end
 End.
