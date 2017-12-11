@@ -1,0 +1,91 @@
+#!/usr/bin/awful
+
+!fun :walk $x $y $step
+	!if :eq &step s'n'
+		:sub &y i1
+	!elif :eq &step s's'
+		:add &y i1
+	!elif :eq &step s'ne'
+		:sub &y :abs :mod $x i2
+		:sub &x i1
+	!elif :eq &step s'nw'
+		:sub &y :abs :mod $x i2
+		:add &x i1
+	!elif :eq &step s'se'
+		:sub &x i1
+		:add &y :abs :mod $x i2
+	!elif :eq &step s'sw'
+		:add &x i1
+		:add &y :abs :mod $x i2
+	!else
+		:writeln s'watafugg? "' $step s'"'
+		:exit
+	!fi
+!nuf
+
+
+!fun :distance $tx $ty
+	:set &steps &nx &ny i0
+	!while i1
+		!if :gt $ny $ty
+			!if :gt $nx $tx
+				:walk &nx &ny s'ne'
+			!elif :lt $nx $tx
+				:walk &nx &ny s'nw'
+			!else
+				:walk &nx &ny s'n'
+			!fi
+		!elif :lt $ny $ty
+			!if :gt $nx $tx
+				:walk &nx &ny s'se'
+			!elif :lt $nx $tx
+				:walk &nx &ny s'sw'
+			!else
+				:walk &nx &ny s's'
+			!fi
+		!else
+			!if :gt $nx $tx
+				!if :mod $nx i2
+					:walk &nx &ny s'se'
+				!else
+					:walk &nx &ny s'ne'
+				!fi
+			!elif :lt $nx $tx
+				!if :mod $nx i2
+					:walk &nx &ny s'sw'
+				!else
+					:walk &nx &ny s'nw'
+				!fi
+			!else
+				:return $steps
+			!fi
+		!fi
+		:add &steps i1
+	!done
+	:return $steps
+!nuf
+
+
+:set &line s''
+!while :not :stdin-eof
+	:readln &line
+	:set &input :str-explode &line s','
+	
+	:set &furthest &dist &x &y i0
+	
+	:set &idx i0
+	:set &len :arr-count &input
+	!while :lt &idx &len
+		:walk &x &y &input[&idx]
+		
+		:set &dist :distance $x $y
+		!if :gt &dist &furthest
+			:set &furthest &dist
+		!fi
+		
+		:add &idx i1
+	!done
+	
+	:writeln s'> ' $x s':' $y s' » ' :distance $x $y
+	:writeln s'  furthest: ' $furthest
+!done
