@@ -1,0 +1,63 @@
+#!/home/suve/Projects/awful/awful
+
+:set &max-layer i0
+:set &layer-depth :arr
+:set &layer-state :arr
+:set &layer-dir :arr
+
+
+!fun :calc-step $pos
+	:set &risk i0
+	# :writeln s'pos: ' $pos s'; scanner: ' $layer-state[$pos] s' (' &layer-depth[$pos] s')'
+	
+	!if :seq i0 :abs &layer-state[&pos]
+		:writeln s'caught at layer ' $pos
+		:set &risk :mul $pos (:add $layer-depth[$pos] i1)
+	!fi
+	
+	:set &i i0
+	!while :le &i &max-layer
+		!if :is-int &layer-state[&i]
+			!if :eq &layer-dir[&i] i0
+				!if :eq &layer-depth[&i] :add &layer-state[&i] i1
+					:set &layer-dir[&i] i1
+				!fi
+			!else
+				!if :eq i0 :sub &layer-state[&i] i1
+					:set &layer-dir[&i] i0
+				!fi
+			!fi
+		!fi
+		:add &i i1
+	!done
+	
+	:return &risk
+!nuf
+
+
+:set &line s''
+!while :not :stdin-eof
+	:readln &line
+	
+	:set &parts :str-explode &line s':'
+	:set &l-no :mkint $parts[i0]
+	:set &l-dp :mkint $parts[i1]
+	
+	:set &layer-depth[&l-no] (:sub &l-dp i1)
+	:set &layer-state[&l-no] i0
+	:set &layer-dir[&l-no] i0
+	
+	!if :gt &l-no &max-layer
+		:set &max-layer &l-no
+	!fi
+!done
+
+
+:set &pos i0
+:set &danger i0
+!while :le &pos &max-layer
+	:add &danger :calc-step $pos
+	:add &pos i1
+!done
+
+:writeln s'> ' &danger
