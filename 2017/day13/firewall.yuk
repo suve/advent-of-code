@@ -1,4 +1,4 @@
-#!/home/suve/Projects/awful/awful
+#!/usr/bin/awful
 
 :set &max-layer i0
 :set &layer-depth :arr
@@ -11,13 +11,13 @@
 	# :writeln s'pos: ' $pos s'; scanner: ' $layer-state[$pos] s' (' &layer-depth[$pos] s')'
 	
 	!if :seq i0 :abs &layer-state[&pos]
-		:writeln s'caught at layer ' $pos
+		# :writeln s'caught at layer ' $pos
 		:set &risk :mul $pos (:add $layer-depth[$pos] i1)
 	!fi
 	
 	:set &i i0
 	!while :le &i &max-layer
-		!if :is-int &layer-state[&i]
+		!if :is-int &layer-depth[&i]
 			!if :eq &layer-dir[&i] i0
 				!if :eq &layer-depth[&i] :add &layer-state[&i] i1
 					:set &layer-dir[&i] i1
@@ -35,6 +35,34 @@
 !nuf
 
 
+!fun :reset-state
+	:set &i i0
+	!while :le &i &max-layer
+		:set &layer-state[&i] i0
+		:set &layer-dir[&i] i0
+		:add &i i1
+	!done
+!nuf
+
+
+!fun :will-get-caught $delay
+	:set &i i0
+	!while :le &i &max-layer
+		!if :is-int &layer-depth[&i]
+			:set &cycle-len :mul i2 $layer-depth[$i]
+			
+			!if :eq i0 :mod (:add $delay $i) $cycle-len
+				:writeln s'=> ' (:add $delay $i) s' vs. ' $cycle-len s' (0)'
+				:return i1
+			!fi
+		!fi
+		:add &i i1
+	!done
+	
+	:return i0
+!nuf
+
+
 :set &line s''
 !while :not :stdin-eof
 	:readln &line
@@ -44,20 +72,26 @@
 	:set &l-dp :mkint $parts[i1]
 	
 	:set &layer-depth[&l-no] (:sub &l-dp i1)
-	:set &layer-state[&l-no] i0
-	:set &layer-dir[&l-no] i0
-	
 	!if :gt &l-no &max-layer
 		:set &max-layer &l-no
 	!fi
 !done
 
 
+:reset-state
 :set &pos i0
 :set &danger i0
 !while :le &pos &max-layer
 	:add &danger :calc-step $pos
 	:add &pos i1
 !done
+:writeln s'> delay 0: danger ' &danger
 
-:writeln s'> ' &danger
+
+:set &delay i0
+!repeat
+	:set &caught :will-get-caught $delay
+	:writeln s'> delay ' $delay s': caught=' $caught
+	
+	:add &delay i1
+!until :eq i0 &caught
