@@ -6,6 +6,7 @@
 
 #define ROUNDS 64
 #define ROWS 128
+#define COLS 128
 
 #define SIZE 256
 int elem[SIZE];
@@ -91,6 +92,39 @@ int count_bits(void) {
 	return count;
 }
 
+
+uint16_t disk[ROWS * COLS];
+#define DSKOFF(x, y)  ( ( (y) * COLS ) + (x) )
+
+int mark_neighbours(const int x, const int y, const int reg) {
+	int offset = DSKOFF(x, y);
+	if(disk[offset] != 1) return 0;
+	
+	disk[offset] = reg;
+	// printf("marking neighbours of %d:%d\n", x, y);
+	
+	if(x > 0) mark_neighbours(x-1, y, reg);
+	if(x < COLS-1) mark_neighbours(x+1, y, reg);
+	
+	if(y > 0) mark_neighbours(x, y-1, reg);
+	if(y < ROWS-1) mark_neighbours(x, y+1, reg);
+	
+	return 1;
+}
+
+int calc_regions(void) {
+	const int start_reg = 2;
+	
+	int reg = start_reg;
+	for(int y = 0; y < ROWS; ++y) {
+		for(int x = 0; x < COLS; ++x) {
+			reg += mark_neighbours(x, y, reg);
+		}
+	}
+	
+	return reg - start_reg;
+}
+
 int main(void) {
 	char input[128];
 	if(fgets(input, sizeof(input), stdin) == NULL) {
@@ -107,19 +141,27 @@ int main(void) {
 		char buffer[128];
 		int buflen = snprintf(buffer, sizeof(buffer), "%s-%d", input, row);
 		
-		// printf("buffer: \"%s\"\n", buffer);
-		
 		calc_hash(buffer, buflen);
-		
-		// printf("> ");
-		// print_hash();
-		
-		int bits_now = count_bits();
-		printf("> row %3d: %d bits\n", row, bits_now);
-		
-		total_bits += bits_now;
+		for(int h = 0; h < HASH_LEN; ++h) {
+			uint8_t hex = hash[h];
+			for(int b = 0; b < 8; ++b) {
+				int offset = DSKOFF(h*8 + b, row);
+				disk[offset] = !!(hex & (1 << (7-b)));
+				
+				total_bits += disk[offset];
+			}
+		}
 	}
+	for(int y = 0; y < 8; ++y) {
+		for(int x = 0; x < 8; ++x) {
+			int offset = DSKOFF(x, y);
+			putc(disk[offset] ? '#' : '.', stdout);
+		}
+		putc('\n', stdout);
+	}
+	
 	printf("total bits: %d\n", total_bits);
+	printf("total regions: %d\n", calc_regions());
 	
 	return 0;
 }
