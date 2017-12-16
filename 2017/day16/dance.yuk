@@ -1,6 +1,7 @@
 #!/usr/bin/awful
 
 :set &prognum i0
+:set &dances i0
 
 :set &arg i0
 !while :lt &arg :param-num
@@ -8,10 +9,19 @@
 		:add &arg i1
 		:set &prognum :param-str &arg
 	!fi
+	!if :eq s'--dances' :param-str &arg
+		:add &arg i1
+		:set &dances :param-str &arg
+	!fi
 	:add &arg i1
 !done
 
-!if :eq &prognum i0
+!if :le &dances i0
+	:writeln s'You must specify the number of dances: "--dances X"'
+	:exit
+!fi
+
+!if :le &prognum i0
 	:writeln s'You must specify the number of programs dancing: "--programs X"'
 	:exit
 !else
@@ -22,6 +32,23 @@
 		:add &p i1
 	!done
 !fi
+
+:set &danceHistory :arr
+:set &danceHistory[i0] :str-implode &prog sss
+!fun :already-seen-before 
+	:set &current :str-implode &prog sss
+	
+	:set &hlen :arr-count &danceHistory
+	:set &hpos i0
+	!while :lt &hpos &hlen
+		!if :eq &current &danceHistory[i0]
+			:return :sub &hlen &hpos
+		!fi
+		:add &hpos i1
+	!done
+	:return i0
+!nuf
+
 
 
 !fun :dance-spin $num
@@ -53,11 +80,51 @@
 	:dance-exchange &pos-a &pos-b
 !nuf
 
+!fun :dance-permutate $permpos
+	:set &copy &prog
+	
+	# :writeln s'> P' (:str-implode $permpos s'/') s' : ' :str-implode &prog sss
+	
+	:set &p i0
+	!while :lt &p &prognum
+		# :writeln s'> moving ' &copy[&p] s' from position ' &p s' to ' :mod (:add $p $permpos[$p]) $prognum
+		:set &prog[:mod (:add $p $permpos[:add i1 $p]) $prognum] &copy[&p]
+		:add &p i1
+	!done
+!nuf
+
+
+:set &sparseInput :arr
+:set &stepsSincePartner i0
+:set &lastPartnerPos &prog
+!fun :remember-permutation
+	!if :eq &stepsSincePartner i0
+		:return
+	!fi
+	
+	# :writeln s'> ' (:str-implode &lastPartnerPos sss) s' vs ' (:str-implode &prog sss)
+	:set &permut :arr s'P'
+	
+	:set &po i0
+	!while :lt &po &prognum
+		:set &pn i0
+		!while :neq &lastPartnerPos[&po] &prog[:mod (:add $po $pn) &prognum]
+			# :writeln s'> ' &lastPartnerPos[&po] s' vs ' &prog[:mod (:add $po $pn) &prognum] s' (' $prognum s')'
+			:add &pn i1
+		!done
+		
+		:set &permut[:add i1 &po] &pn
+		:add &po i1
+	!done
+	
+	:set &sparseInput[:arr-count &sparseInput] &permut
+!nuf
+
+
 
 :set &input-line s''
 :readln &input-line
 :set &input :str-explode &input-line s','
-
 
 :set &idx i0
 :set &len :arr-count &input
@@ -65,19 +132,70 @@
 	:set &cmd &input[&idx][i1]
 	:set &args :str-sub &input[&idx] i2
 	
-	:write s'> ' &input[&idx] s': ' :str-implode &prog sss
+	# :write s'> ' &input[&idx] s': ' :str-implode &prog sss
 	
 	!if :eq &cmd s's'
 		:dance-spin &args
+		:add &stepsSincePartner i1
 	!elif :eq &cmd s'x'
 		:set &args-arr :str-explode &args s'/'
 		:dance-exchange &args-arr[i0] &args-arr[i1]
+		:add &stepsSincePartner i1
 	!elif :eq &cmd s'p'
 		:set &args-arr :str-explode &args s'/'
+		
+		:remember-permutation
+		:set &sparseInput[:arr-count &sparseInput] :arr s'p' &args-arr[i0] &args-arr[i1]
+		
 		:dance-partner &args-arr[i0] &args-arr[i1]
+		
+		:set &lastPartnerPos &prog
+		:set &stepsSincePartner i0
 	!fi
 	
-	:writeln s' -> ' :str-implode &prog sss
+	# :writeln s' -> ' :str-implode &prog sss
 	:add &idx i1
 !done
+:remember-permutation
+
 :writeln :str-implode &prog sss
+:set &danceHistory[i0] :str-implode &prog sss
+
+
+#~
+:set &si i0
+!while :lt $si :arr-count &sparseInput
+	:writeln s'---> ' :str-implode &sparseInput[$si] s'/'
+	:add &si i1
+!done
+~#
+
+
+:sub &dances i1
+!while :gt &dances i0
+	:sub &dances i1
+	
+	:set &idx i0
+	:set &len :arr-count &sparseInput
+	!while :lt &idx &len
+		:set &cmd &sparseInput[&idx][i0]
+		
+		!if :eq &cmd s'p'
+			:dance-partner &sparseInput[&idx][i1] &sparseInput[&idx][i2]
+		!elif :eq &cmd s'P'
+			:dance-permutate &sparseInput[&idx]
+		!fi
+		
+		:add &idx i1
+	!done
+	
+	:writeln :str-implode &prog sss
+	
+	:set &cycleLen :already-seen-before 
+	!if :gt &cycleLen i0
+		:writeln s'-> cycle: ' $cycleLen
+		:set &dances :mod $dances $cycleLen
+	!else
+		:set &danceHistory[:arr-count &danceHistory] :str-implode &prog sss
+	!fi
+!done 
