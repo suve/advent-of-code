@@ -1,0 +1,15 @@
+# The combination below ignores all extension-less files (compiled executables)
+*
+!/**/
+!*.*
+
+# Ignore compilation leftovers
+*.a
+*.class
+*.gch
+*.o
+*.ppu
+
+# Misc stuff
+*.fifo
+*.geany
