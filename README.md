@@ -1,6 +1,7 @@
 # advent-of-code
 
-Solutions for [Advent of Code](https://adventofcode.com/) puzzles.    
+Solutions for [Advent of Code](https://adventofcode.com/) puzzles.
+
 Written in several different languages, based (mostly) on what I felt like using that day
 and (partly) on what I thought was the best tool for solving a particular puzzle.
 
@@ -14,6 +15,7 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 | :---: | :---: | :---: |
 | 01 | [freq.java](2018/day01/freq.java)                   | [freq2.java](2018/day01/freq2.java)           |
 | 02 | [checksum.java](2018/day02/checksum.java)           | [findids.java](2018/day02/findids.java)       |
+| 03 | [fabric.c](2018/day03/fabric.c)                     | [fabric.c](2018/day03/fabric.c)               |
 
 
 # 2017
