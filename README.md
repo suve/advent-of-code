@@ -17,6 +17,7 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 | 02 | [checksum.java](2018/day02/checksum.java)           | [findids.java](2018/day02/findids.java)       |
 | 03 | [fabric.c](2018/day03/fabric.c)                     | [fabric.c](2018/day03/fabric.c)               |
 | 04 | [strategy.php](2018/day04/strategy.php)             | [strategy.php](2018/day04/strategy.php)       |
+| 05 | [polymer.php](2018/day05/polymer.php)               | [polymer.php](2018/day05/polymer.php)         |
 
 
 # 2017
