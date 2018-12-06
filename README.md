@@ -18,6 +18,7 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 | 03 | [fabric.c](2018/day03/fabric.c)                     | [fabric.c](2018/day03/fabric.c)               |
 | 04 | [strategy.php](2018/day04/strategy.php)             | [strategy.php](2018/day04/strategy.php)       |
 | 05 | [polymer.php](2018/day05/polymer.php)               | [polymer.php](2018/day05/polymer.php)         |
+| 06 | [flood.c](2018/day06/flood.c)                       | [flood.c](2018/day06/flood.c)                 |
 
 
 # 2017
