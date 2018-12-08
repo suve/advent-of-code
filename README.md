@@ -20,6 +20,7 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 | 05 | [polymer.php](2018/day05/polymer.php)               | [polymer.php](2018/day05/polymer.php)         |
 | 06 | [flood.c](2018/day06/flood.c)                       | [flood.c](2018/day06/flood.c)                 |
 | 07 | [lotsa-steps.cs](2018/day07/lotsa-steps.cs)         | [timed-steps.cs](2018/day07/lotsa-steps.cs)   |
+| 08 | [tree.php](2018/day08/tree.php)                     | [tree.php](2018/day08/tree.php)               |
 
 
 # 2017
