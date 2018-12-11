@@ -1,0 +1,119 @@
+#!/usr/bin/awful
+
+!const =GRID-SIZE i300
+
+:set &grid :arr
+:set &power :arr
+
+
+!fun :reset-grid
+	!global &grid &power
+	:set &grid :arr
+	:set &power :arr
+	
+	:set &y i0
+	!while :lt $y =GRID-SIZE
+		:set &grid[$y] :arr
+		:set &power[$y] :arr
+		
+		:set &x i0
+		!while :lt $x =GRID-SIZE
+			:set &grid[$y][$x] i0
+			:set &power[$y][$x] i0
+			:add &x i1
+		!done
+		:add &y i1
+	!done
+!nuf
+
+
+!fun :calculate-cell-powers $grid-id
+	!global &grid &power
+
+	:set &y i0
+	!while :lt $y =GRID-SIZE
+		:set &x i0
+		!while :lt $x =GRID-SIZE
+			:set &rack-id :add $x i10
+			:set &cell-power :mul $rack-id $y
+			:add &cell-power $grid-id
+			:mul &cell-power $rack-id
+			:div &cell-power i100
+			:mod &cell-power i10
+			:sub &cell-power i5
+			
+			:set &grid[$y][$x] $cell-power
+			:add &x i1
+		!done
+		:add &y i1
+	!done
+!nuf
+
+
+!fun :calculate-3x3-powers
+	!global &grid &power
+
+	:set &y i0
+	!while :lt $y =GRID-SIZE
+		:set &x i0
+		!while :lt $x =GRID-SIZE
+			:set &square-power i0
+			
+			:set &oy i0
+			!while :lt $oy i3
+				:set &ox i0
+				!while :lt $ox i3
+					:add &square-power &grid[:add $y $oy][:add $x $ox]
+					:add &ox i1
+				!done
+				:add &oy i1
+			!done
+			
+			:set &power[$y][$x] $square-power
+			
+			:add &x i1
+		!done
+		:add &y i1
+	!done
+!nuf
+
+
+!fun :find-best-3x3 &out-x &out-y &out-power
+	!global &power
+
+	:set &best-power &best-x &best-y i-500
+
+	:set &y i0
+	!while :lt $y =GRID-SIZE
+		:set &x i0
+		!while :lt $x =GRID-SIZE
+			:set &cell-power $power[$y][$x]
+			
+			!if :gt $cell-power $best-power
+				:set &best-power $cell-power
+				:set &best-y $y
+				:set &best-x $x
+			!fi
+			:add &x i1
+		!done
+		:add &y i1
+	!done
+	
+	:set &out-x $best-x
+	:set &out-y $best-y
+	:set &out-power $best-power
+!nuf
+
+
+:set &line i0
+!while :not :stdin-eof
+	:readln &line
+	
+	:reset-grid
+	:calculate-cell-powers $line
+	:calculate-3x3-powers
+	
+	:set &ax &ay &ap i0
+	:find-best-3x3 &ax &ay &ap
+	:writeln s'--> grid ' $line s|: | $ax s|,| $ay s| (| $ap ss power)s
+!done
