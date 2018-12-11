@@ -21,6 +21,9 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 | 06 | [flood.c](2018/day06/flood.c)                       | [flood.c](2018/day06/flood.c)                 |
 | 07 | [lotsa-steps.cs](2018/day07/lotsa-steps.cs)         | [timed-steps.cs](2018/day07/lotsa-steps.cs)   |
 | 08 | [tree.php](2018/day08/tree.php)                     | [tree.php](2018/day08/tree.php)               |
+| 09 | [marbles.js](2018/day09/marbles.js)                 |                                               |
+| 10 | [message.c](2018/day10/message.c)                   | [message-image.c](2018/day10/message-image.c) |
+| 11 | [power.yuk](2018/day11/power.yuk)                   | [power.yuk](2018/day11/power.yuk)             |
 
 
 # 2017

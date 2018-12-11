@@ -4,22 +4,30 @@
 
 :set &grid :arr
 :set &power :arr
+:set &sumx :arr
+:set &sumy :arr
 
 
 !fun :reset-grid
-	!global &grid &power
+	!global &grid &power &sumx &sumy
 	:set &grid :arr
 	:set &power :arr
+	:set &sumx :arr
+	:set &sumy :arr
 	
 	:set &y i0
 	!while :lt $y =GRID-SIZE
 		:set &grid[$y] :arr
 		:set &power[$y] :arr
+		:set &sumx[$y] :arr
+		:set &sumy[$y] :arr
 		
 		:set &x i0
 		!while :lt $x =GRID-SIZE
 			:set &grid[$y][$x] i0
 			:set &power[$y][$x] i0
+			:set &sumx[$y][$x] i0
+			:set &sumy[$y][$x] i0
 			:add &x i1
 		!done
 		:add &y i1
@@ -28,7 +36,7 @@
 
 
 !fun :calculate-cell-powers $grid-id
-	!global &grid &power
+	!global &grid &power &sumx &sumy
 
 	:set &y i0
 	!while :lt $y =GRID-SIZE
@@ -47,29 +55,65 @@
 		!done
 		:add &y i1
 	!done
+	
+	:set &y i0
+	!while :lt $y =GRID-SIZE
+		:set &sumx[$y][i0] &grid[$y][i0]
+		
+		:set &x i1
+		!while :lt $x =GRID-SIZE
+			:set &s &sumx[$y][:sub $x i1]
+			:add &s &grid[$y][$x]
+			:set &sumx[$y][$x] $s
+			
+			:add &x i1
+		!done
+		:add &y i1
+	!done
+	
+	:set &x i0
+	!while :lt $x =GRID-SIZE
+		:set &sumy[i0][$x] &grid[i0][$x]
+		
+		:set &y i1
+		!while :lt $y =GRID-SIZE
+			:set &s &sumy[:sub $y i1][$x]
+			:add &s &grid[$y][$x]
+			:set &sumy[$y][$x] $s
+			
+			:add &y i1
+		!done
+		:add &x i1
+	!done
 !nuf
 
 
-!fun :calculate-3x3-powers
-	!global &grid &power
+!fun :calculate-squares-incremental $size
+	!global &grid &power &sumx &sumy
+
+	:set &limit :sub =GRID-SIZE $size
 
 	:set &y i0
-	!while :lt $y =GRID-SIZE
+	!while :le $y $limit
 		:set &x i0
-		!while :lt $x =GRID-SIZE
-			:set &square-power i0
+		!while :le $x $limit
+			:set &square-power &power[$y][$x]
 			
-			:set &oy i0
-			!while :lt $oy i3
-				:set &ox i0
-				!while :lt $ox i3
-					:add &square-power &grid[:add $y $oy][:add $x $ox]
-					:add &ox i1
-				!done
-				:add &oy i1
-			!done
+			:set &right :add $x $size i-1
+			:set &down :add $y $size i-1
 			
-			:set &power[$y][$x] $square-power
+			:add &square-power &sumx[$down][$right]
+			!if :gt $x i0
+				:sub &square-power &sumx[$down][:sub $x i1]
+			!fi
+			
+			:add &square-power &sumy[$down][$right]
+			!if :gt $y i0
+				:sub &square-power &sumy[:sub $y i1][$right]
+			!fi
+			
+			:sub &square-power &grid[$down][$right]
+			:set &power[&y][&x] &square-power
 			
 			:add &x i1
 		!done
@@ -78,16 +122,17 @@
 !nuf
 
 
-!fun :find-best-3x3 &out-x &out-y &out-power
+!fun :find-best-square $size &out-x &out-y &out-power
 	!global &power
 
-	:set &best-power &best-x &best-y i-500
+	:set &limit :sub =GRID-SIZE $size
+	:set &best-power &best-x &best-y i-987654321
 
 	:set &y i0
-	!while :lt $y =GRID-SIZE
+	!while :le $y $limit
 		:set &x i0
-		!while :lt $x =GRID-SIZE
-			:set &cell-power $power[$y][$x]
+		!while :le $x $limit
+			:set &cell-power &power[$y][$x]
 			
 			!if :gt $cell-power $best-power
 				:set &best-power $cell-power
@@ -111,9 +156,40 @@
 	
 	:reset-grid
 	:calculate-cell-powers $line
-	:calculate-3x3-powers
+	
+	:set &power &grid
+	:calculate-squares-incremental i2
+	:calculate-squares-incremental i3
 	
 	:set &ax &ay &ap i0
-	:find-best-3x3 &ax &ay &ap
-	:writeln s'--> grid ' $line s|: | $ax s|,| $ay s| (| $ap ss power)s
+	:find-best-square i3 &ax &ay &ap
+	:writeln s'--> part1: grid ' $line s| » | $ax s|,| $ay s| (| $ap ss power)s
+	
+	#~ part2 ~#
+	:set &power &grid
+	
+	:set &bx &by &bp i0
+	:find-best-square i1 &bx &by &bp
+	
+	:set &bs i1
+	:set &size i2
+	!while :le $size =GRID-SIZE
+		:calculate-squares-incremental $size
+		
+		:set &ax &ay &ap i0
+		:find-best-square $size &ax &ay &ap
+		
+		!if :gt $ap $bp
+			:set &bp &ap
+			:set &bs $size
+			:set &bx &ax
+			:set &by &ay
+		!fi
+		
+		:write ss.s
+		:add &size i1
+	!done
+	
+	:writeln
+	:writeln s'--> part2: grid ' $line s| » | $bx s|,| $by s|,| $bs s| (| $bp ss power)s
 !done
