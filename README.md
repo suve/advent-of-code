@@ -26,6 +26,7 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 | 11 | [power.yuk](2018/day11/power.yuk)                   | [power.yuk](2018/day11/power.yuk)             |
 | 12 |                                                     |                                               |
 | 13 | [carts.c](2018/day13/carts.c)                       | [carts.c](2018/day13/carts.c)                 |
+| 14 | [recipes.c](2018/day14/recipes.c)                   | [recipes.c](2018/day14/recipes.c)             |
 
 
 # 2017
