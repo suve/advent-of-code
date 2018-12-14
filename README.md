@@ -13,20 +13,20 @@ and some of it would get me kicked out of a job interview on the grounds of bein
 # 2018
 | Day | Part 1 | Part 2 |
 | :---: | :---: | :---: |
-| 01 | [freq.java](2018/day01/freq.java)                   | [freq2.java](2018/day01/freq2.java)           |
-| 02 | [checksum.java](2018/day02/checksum.java)           | [findids.java](2018/day02/findids.java)       |
-| 03 | [fabric.c](2018/day03/fabric.c)                     | [fabric.c](2018/day03/fabric.c)               |
-| 04 | [strategy.php](2018/day04/strategy.php)             | [strategy.php](2018/day04/strategy.php)       |
-| 05 | [polymer.php](2018/day05/polymer.php)               | [polymer.php](2018/day05/polymer.php)         |
-| 06 | [flood.c](2018/day06/flood.c)                       | [flood.c](2018/day06/flood.c)                 |
-| 07 | [lotsa-steps.cs](2018/day07/lotsa-steps.cs)         | [timed-steps.cs](2018/day07/lotsa-steps.cs)   |
-| 08 | [tree.php](2018/day08/tree.php)                     | [tree.php](2018/day08/tree.php)               |
-| 09 | [marbles.js](2018/day09/marbles.js)                 |                                               |
-| 10 | [message-image.c](2018/day10/message-image.c)       | [message-image.c](2018/day10/message-image.c) |
-| 11 | [power.yuk](2018/day11/power.yuk)                   | [power.yuk](2018/day11/power.yuk)             |
-| 12 |                                                     |                                               |
-| 13 | [carts.c](2018/day13/carts.c)                       | [carts.c](2018/day13/carts.c)                 |
-| 14 | [recipes.c](2018/day14/recipes.c)                   | [recipes.c](2018/day14/recipes.c)             |
+| 01 | [freq.java](2018/day01/freq.java)                   | [freq2.java](2018/day01/freq2.java)               |
+| 02 | [checksum.java](2018/day02/checksum.java)           | [findids.java](2018/day02/findids.java)           |
+| 03 | [fabric.c](2018/day03/fabric.c)                     | [fabric.c](2018/day03/fabric.c)                   |
+| 04 | [strategy.php](2018/day04/strategy.php)             | [strategy.php](2018/day04/strategy.php)           |
+| 05 | [polymer.php](2018/day05/polymer.php)               | [polymer.php](2018/day05/polymer.php)             |
+| 06 | [flood.c](2018/day06/flood.c)                       | [flood.c](2018/day06/flood.c)                     |
+| 07 | [lotsa-steps.cs](2018/day07/lotsa-steps.cs)         | [timed-steps.cs](2018/day07/lotsa-steps.cs)       |
+| 08 | [tree.php](2018/day08/tree.php)                     | [tree.php](2018/day08/tree.php)                   |
+| 09 | [marbles.js](2018/day09/marbles.js)                 |                                                   |
+| 10 | [message-image.c](2018/day10/message-image.c)       | [message-image.c](2018/day10/message-image.c)     |
+| 11 | [power.yuk](2018/day11/power.yuk)                   | [power.yuk](2018/day11/power.yuk)                 |
+| 12 | [plants.sh](2018/day12/plants.sh)                   | [ancient-plants.sh](2018/day12/ancient-plants.sh) |
+| 13 | [carts.c](2018/day13/carts.c)                       | [carts.c](2018/day13/carts.c)                     |
+| 14 | [recipes.c](2018/day14/recipes.c)                   | [recipes.c](2018/day14/recipes.c)                 |
 
 
 # 2017
