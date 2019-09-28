@@ -96,13 +96,20 @@ struct OpcodeInfo {
 #define OPCODE_COUNT (int)(sizeof(Opcode) / sizeof(struct OpcodeInfo))
 
 
-int main(void) {
+void process_samples(int *opPossible) {
 	int sampleNo = 0;
 	int threeMatches = 0;
-
+	
+	int emptyLines = 0;
 	char line[256];
 	while(fgets(line, sizeof(line), stdin) != NULL) {
-		if(strncmp(line, "Before: ", 8) != 0) continue;
+		if(strncmp(line, "Before: ", 8) != 0) {
+			if(++emptyLines > 1) 
+				break;
+			else
+				continue;
+		}
+		emptyLines = 0;
 
 		int before[4];
 		sscanf(line, "Before: [%d, %d, %d, %d]", before+0, before+1, before+2, before+3);
@@ -131,12 +138,13 @@ int main(void) {
 				matches += 1;
 			} else {
 				match[i] = 0;
+				opPossible[opcodeNo * OPCODE_COUNT + i] = 0;
 			}
 		}
 
 		printf("Sample %d behaves like %d opcodes: ", sampleNo, matches);
 		for(int i = 0; i < OPCODE_COUNT; ++i) {
-			if(match[i]) printf("%s, ", Opcode[i].name);
+			if(match[i]) printf("%s ", Opcode[i].name);
 		}
 		puts("");
 
@@ -145,4 +153,77 @@ int main(void) {
 	}
 
 	printf("--> part1: %d\n", threeMatches);
+}
+
+
+void decode_opcodes(int *opPossible, int *opMap) {
+	for(int o = 0; o < OPCODE_COUNT; ++o) {
+		printf("opcode %d may be: ", o);
+		for(int i = 0; i < OPCODE_COUNT; ++i) {
+			if(opPossible[o * OPCODE_COUNT + i]) printf("%s ", Opcode[i].name);
+		}
+		puts("");
+	}	
+
+	int singles;
+	do {
+		int howmany[OPCODE_COUNT];
+		for(int op = 0; op < OPCODE_COUNT; ++op) {
+			howmany[op] = 0;
+			for(int i = 0; i < OPCODE_COUNT; ++i) {
+				if(opPossible[op * OPCODE_COUNT + i]) {
+					howmany[op] += 1;
+					opMap[op] = i;
+				}
+			}
+		}
+
+		singles = 0;
+		for(int op = 0; op < OPCODE_COUNT; ++op) {
+			if(howmany[op] != 1) continue;
+			++singles;
+
+			for(int other = 0; other < OPCODE_COUNT; ++other) {
+				if(other == op) continue;
+
+				int offset = other * OPCODE_COUNT + opMap[op];
+				if(opPossible[offset]) {
+					opPossible[offset] = 0;
+				}
+			}
+		}
+
+	} while(singles != OPCODE_COUNT);
+
+	printf("--> opcodes decoded\n");
+	for(int op = 0; op < OPCODE_COUNT; ++op) {
+		printf("opcode %d is %s\n", op, Opcode[opMap[op]].name);
+	}
+}
+
+void run_program(const int *opMap) {
+	int reg[4];
+	memset(reg, 0, sizeof(reg));
+
+	char line[256];
+	while(fgets(line, sizeof(line), stdin) != NULL) {
+		int opcodeNo, argA, argB, argC;
+		if(sscanf(line, "%d %d %d %d", &opcodeNo, &argA, &argB, &argC) != 4) continue;
+
+		Opcode[opMap[opcodeNo]].func(argA, argB, argC, reg);
+	}
+
+	printf("--> part2: %d %d %d %d\n", reg[0], reg[1], reg[2], reg[3]);
+}
+
+int main(void) {
+	int opMap[OPCODE_COUNT];
+	memset(opMap, 0, sizeof(opMap));
+
+	int opPossible[OPCODE_COUNT * OPCODE_COUNT];
+	memset(opPossible, 1, sizeof(opPossible));
+
+	process_samples(opPossible);
+	decode_opcodes(opPossible, opMap);
+	run_program(opMap);
 }
