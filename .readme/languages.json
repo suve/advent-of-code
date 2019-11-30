@@ -1,0 +1,13 @@
+{
+	"c": "C",
+	"cpp": "C++",
+	"cs": "C♯",
+	"go": "Go",
+	"java": "Java",
+	"js": "JavaScript",
+	"pas": "Pascal",
+	"php": "PHP",
+	"py": "Python",
+	"sh": "Bash",
+	"yuk": "Awful"
+}
