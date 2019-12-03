@@ -8,6 +8,14 @@ import (
 	"strings"
 )
 
+func Abs(a int) int {
+	if (a >= 0) {
+		return +a
+	} else {
+		return -a
+	}
+}
+
 type Point struct {
 	x, y int
 }
@@ -21,25 +29,31 @@ func (p Point) Print() {
 }
 
 func (p Point) Distance() int {
-	var x, y int
+	return Abs(p.x) + Abs(p.y)
+}
 
-	if p.x > 0 {
-		x = +p.x
-	} else {
-		x = -p.x
-	}
+func (p Point) DistanceTo(dp Point) int {
+	return Segment{
+		start: p,
+		end:   dp,
+	}.Length()
+}
 
-	if p.y > 0 {
-		y = +p.y
-	} else {
-		y = -p.y
-	}
-
-	return x + y
+type Intersection struct {
+	pt Point
+	steps1, steps2 int
 }
 
 type Segment struct {
 	start, end Point
+}
+
+func (s Segment) Length() int {
+	if(s.start.x == s.end.x) {
+		return Abs(s.end.y - s.start.y)
+	} else {
+		return Abs(s.end.x - s.start.x)
+	}
 }
 
 func (s Segment) ToString() string {
@@ -136,6 +150,36 @@ func FindIntersection(a, b Segment) *Point {
 	}
 }
 
+func PrintClosestIntersection(intersections []Intersection) {
+	minIdx := 0
+	minDist := intersections[minIdx].pt.Distance()
+	for idx := 1; idx < len(intersections); idx += 1 {
+		dist := intersections[idx].pt.Distance()
+		if dist < minDist {
+			minIdx = idx
+			minDist = dist
+		}
+	}
+
+	fmt.Printf("Closest intersection is #%d\n", minIdx)
+	intersections[minIdx].pt.Print()
+}
+
+func PrintCheapestIntersection(intersections []Intersection) {
+	minIdx := 0
+	minCost := intersections[minIdx].steps1 + intersections[minIdx].steps2
+	for idx := 1; idx < len(intersections); idx += 1 {
+		cost := intersections[idx].steps1 + intersections[idx].steps2
+		if cost < minCost {
+			minIdx = idx
+			minCost = cost
+		}
+	}
+
+	fmt.Printf("Cheapest intersection is #%d\n", minIdx)
+	fmt.Printf("Intersection{ x: %d, y: %d }(Cost: %d)\n", intersections[minIdx].pt.x, intersections[minIdx].pt.y, minCost)
+}
+
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	var line string
@@ -148,33 +192,27 @@ func main() {
 	line, _ = reader.ReadString('\n')
 	ParseLine(strings.Trim(line, "\n \t"), &wire2)
 
-	intersections := []Point{}
+	intersections := []Intersection{}
+	steps1 := 0
 	for i := 0; i < len(wire1); i += 1 {
+		steps2 := 0
 		for j := 0; j < len(wire2); j += 1 {
 			cross := FindIntersection(wire1[i], wire2[j])
-			if cross == nil { continue }
-
-			// Special case, shut up
-			if (cross.x == 0) && (cross.y == 0) { continue }
-
-			// fmt.Printf("Segments %s and %s cross at %s\n", wire1[i].ToString(), wire2[j].ToString(), cross.ToString())
-			intersections = append(intersections, *cross)
+			if cross != nil {
+				// Omit the intersection at (0, 0)
+				if (cross.x != 0) || (cross.y != 0) {
+					intersections = append(intersections, Intersection{
+						pt:     *cross,
+						steps1: steps1 + cross.DistanceTo(wire1[i].start),
+						steps2: steps2 + cross.DistanceTo(wire2[j].start),
+					})
+				}
+			}
+			steps2 += wire2[j].Length()
 		}
+		steps1 += wire1[i].Length()
 	}
 
-	minIdx := 0
-	minDist := intersections[minIdx].Distance()
-	intersections[minIdx].Print()
-	for idx := 1; idx < len(intersections); idx += 1 {
-		intersections[idx].Print()
-		
-		dist := intersections[idx].Distance()
-		if dist < minDist {
-			minIdx = idx
-			minDist = dist
-		}
-	}
-
-	fmt.Printf("Closest intersection is #%d\n", minIdx)
-	intersections[minIdx].Print()
+	PrintClosestIntersection(intersections)
+	PrintCheapestIntersection(intersections)
 }

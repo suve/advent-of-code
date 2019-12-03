@@ -2,7 +2,7 @@
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
 		"intcode.py", "intcode2.py",
-		null, null,
+		"wires.go", "wires.go",
 		null, null,
 		null, null,
 		null, null,
