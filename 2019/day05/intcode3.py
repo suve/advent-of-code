@@ -55,7 +55,27 @@ def run(ints, input):
 			pos += 2
 
 			print("Opcode 4: {}".format(get_val(ints, arg, argmode[0])))
-		elif ints[pos] == 99:
+		elif (op == 5) or (op == 6):
+			arg1 = ints[pos+1]
+			arg2 = ints[pos+2]
+			
+			val = get_val(ints, arg1, argmode[0])
+			if ((op == 5) and (val != 0)) or ((op == 6) and (val == 0)):
+				pos = get_val(ints, arg2, argmode[1])
+			else:
+				pos += 3
+		elif (op == 7) or (op == 8):
+			arg1 = ints[pos+1]
+			arg2 = ints[pos+2]
+			arg3 = ints[pos+3]
+			pos += 4
+
+			val1 = get_val(ints, arg1, argmode[0])
+			val2 = get_val(ints, arg2, argmode[1])
+
+			condition = ((op == 7) and (val1 < val2)) or ((op == 8) and (val1 == val2))
+			ints[arg3] = 1 if condition else 0
+		elif op == 99:
 			break
 		else:
 			print("Unknown opcode \"{}\"".format(ints[pos]), file=sys.stderr)
@@ -64,12 +84,8 @@ def run(ints, input):
 	return ints
 
 
-def read_input():
-	input = sys.stdin.read().split(',')
-	input = list(map(lambda x: int(x), input))
-	return input
-
-
 if __name__ == "__main__":
-	run(read_input(), [1])
+	for line in sys.stdin:
+		ints = list(map(lambda x: int(x), line.split(',')))
+		run(ints, [5])
 
