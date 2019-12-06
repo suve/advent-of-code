@@ -65,6 +65,75 @@
 !nuf
 
 
+!fun :find-path_r $src $dst &visited
+	!global &obj
+
+	:set &visited[$src] i1
+
+	# :writeln s'checking path from <' $src s'>(' &visited[$src] s') to <' $dst s'>'
+
+	:set &parent &obj[$src][s'parent']
+	!if :neq $parent s''
+		!if :eq $parent $dst
+			:write $dst s' <- '
+			!return i1
+		!fi
+		
+		!if :not &visited[$parent]
+			:set &parent-path :find-path_r $parent $dst &visited
+			!if :gt $parent-path i0
+				:write $parent s' <- '
+				!return :add i1 $parent-path
+			!fi
+		!fi
+	!fi
+
+	:set &i i0
+	!while :lt $i :arr-count &obj[&src][s'children']
+		:set &child &obj[&src][s'children'][&i]
+
+		!if :not &visited[$child]
+			!if :eq $child $dst
+				:write $child s' <- '
+				!return i1
+			!fi
+
+			:set &child-path :find-path_r $child $dst &visited
+			!if :gt $child-path i0
+				:write $child s' <- '
+				!return :add i1 $child-path
+			!fi
+		!fi
+
+		:add &i i1
+	!done
+
+	!return i-1
+!nuf
+
+
+!fun :find-path $src $dst
+	!global &obj
+
+	!if :eq $src $dst
+		!return i0
+	!fi
+
+	:set &visited :dict
+
+	:set &keys :dict-keys &obj
+	:set &i i0
+	!while :lt $i :arr-count $keys
+		:set &visited[&keys[&i]] i0
+		:add &i i1
+	!done
+
+	:set &path-len :find-path_r $src $dst &visited
+	:writeln $src
+	!return $path-len
+!nuf
+
+
 !fun :read-input
 	!global &obj
 
@@ -84,3 +153,5 @@
 :read-input
 :resolve-orbits s'COM'
 :writeln :count-orbits
+
+:writeln :find-path s'YOU' s'SAN'
