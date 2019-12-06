@@ -1,0 +1,86 @@
+#!/usr/local/bin/awful
+
+!fun :add-object $name
+	!global &obj
+
+	:writeln s'added new object ' $name
+
+	:set &obj[$name] :dict
+	:set &obj[$name][s'depth'] i0
+	:set &obj[$name][s'parent'] s''
+	:set &obj[$name][s'children'] :arr
+!nuf
+
+
+!fun :add-orbit $name $parent
+	!global &obj
+
+	:add-object $name
+	:set &obj[$name][s'parent'] $parent
+
+	!if :arr-contains (:dict-keys &obj) $parent
+		:set &idx :arr-count &obj[$parent][s'children']
+	!else
+		:add-object $parent
+		:set &idx i0
+	!fi
+
+	:set &obj[$parent][s'children'][$idx] $name
+
+	:writeln s'added orbit: ' $name s' orbits ' $parent
+!nuf
+
+
+!fun :resolve-orbits $parent
+	!global &obj
+
+	:set &i i0
+	!while :lt $i :arr-count &obj[&parent][s'children']
+		:set &child &obj[&parent][s'children'][&i]
+
+		:set &obj[&child][s'parent'] $parent
+		:set &obj[&child][s'depth'] :add i1 &obj[&parent][s'depth']
+
+		:writeln sxobject's "x $parent s'" child #' $i s' is ' $child s' (depth: ' &obj[&child][s'depth'] s')'
+
+		:resolve-orbits $child
+		:add &i i1
+	!done
+!nuf
+
+
+!fun :count-orbits
+	!global &obj
+
+	:set &sum i0
+	
+	:set &keys :dict-keys &obj
+	:set &i i0
+	!while :lt $i :arr-count $keys
+		:add &sum &obj[&keys[&i]][s'depth']
+		:add &i i1
+	!done
+
+	!return &sum
+!nuf
+
+
+!fun :read-input
+	!global &obj
+
+	!while :not :stdin-eof
+		:set &line s''
+		:readln &line
+		
+		:set &parts :str-explode $line s')'
+		:add-orbit $parts[i1] $parts[i0]
+	!done
+!nuf
+
+
+:set &obj :dict
+:add-object s'COM'
+
+:read-input
+:resolve-orbits s'COM'
+:writeln :count-orbits
