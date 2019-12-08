@@ -7,7 +7,7 @@
 		"intcode3.py", "intcode3.py",
 		"orbits.yuk", "orbits.yuk",
 		"intcode.py", "intcode-feedback.py",
-		null, null,
+		"image-checksum.py", "image-decode.py",
 		null, null,
 		null, null,
 		null, null,
