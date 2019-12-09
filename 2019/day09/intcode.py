@@ -132,7 +132,13 @@ class IntcodeRunner:
 
 
 if __name__ == "__main__":
+	if (len(sys.argv) < 3) or (sys.argv[1] != "--input"):
+		print("You must provide --input", file=sys.stderr)
+		exit(1)
+	
+	input = str_to_ints(sys.argv[2])
+
 	for line in sys.stdin:
 		ir = IntcodeRunner(str_to_ints(line))
-		output = ir.run([1])
+		output = ir.run(input.copy())
 		print(ints_to_str(output))
