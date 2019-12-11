@@ -10,7 +10,7 @@
 		"image-checksum.py", "image-decode.py",
 		"intcode.py", "intcode.py",
 		"asteroids.c", "asteroids.c",
-		null, null,
+		"intcode.py", "intcode.py",
 		null, null,
 		null, null,
 		null, null,

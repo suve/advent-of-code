@@ -34,6 +34,9 @@ class BoardRow:
 
 		self.data[x] = value
 
+	def __str__(self):
+		return "".join(map(lambda v: '#' if v == 1 else '.', self.data))
+
 	def __init__(self):
 		self.start = 0
 		self.data = []
@@ -62,9 +65,31 @@ class Board:
 				row = BoardRow()
 				self.data += [row]
 
+		if(x < self.minX): self.minX = x
+		elif(x > self.maxX): self.maxX = x
+
 		self.data[y].set(x, value)
 
+	def __str__(self):
+		rows = []
+		for i in range(len(self.data)):
+			row = str(self.data[i])
+			
+			imin = self.data[i].start
+			imax = imin + (len(row) - 1)
+
+			if self.minX < imin:
+				row = ((imin - self.minX) * ".") + row
+			if self.maxX > imax:
+				row = row + ((self.maxX - imax) * ".")
+			rows.append(row)
+
+		return "\n".join(rows)
+
+
 	def __init__(self):
+		self.minX = 0
+		self.maxX = 0
 		self.start = 0
 		self.data = []
 
@@ -243,11 +268,27 @@ class IntcodeRunner:
 
 
 if __name__ == "__main__":
+	mode = 0
+	if(len(sys.argv) < 2):
+		print("Please specify --part1 or --part2", file=sys.stderr)
+		exit(1)
+	
+	if(sys.argv[1] == "--part1"):
+		mode = 1
+	elif(sys.argv[1] == "--part2"):
+		mode = 2
+	else:
+		print("Please specify --part1 or --part2", file=sys.stderr)
+		exit(1)
+
 	for line in sys.stdin:
 		board = Board()
+		if mode == 2: board.set(0, 0, 1)
+
 		walker = BoardWalker(board)
 
 		ir = IntcodeRunner(str_to_ints(line), walker)
 		ir.run()
 
 		print("Total paints: {}; Unique paints: {}".format(walker.get_paints(), walker.get_unique_paints()))
+		print(board)
