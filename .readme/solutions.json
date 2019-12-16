@@ -15,7 +15,7 @@
 		"runner.php", null,
 		null, null,
 		null, null,
-		null, null,
+		"fft.go", null,
 		null, null,
 		null, null,
 		null, null,

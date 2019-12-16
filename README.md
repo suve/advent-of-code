@@ -43,7 +43,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **14½** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day14/recipes.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day14/knot-again.c) |
 | **15** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
 | **15½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
-| **16** | | | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
+| **16** | [![Go](https://github.com/suve/advent-of-code/raw/master/.readme/go.png)](2019/day16/fft.go) | | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
 | **16½** | | | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
 | **17** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock.php) |
 | **17½** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock2.php) |
