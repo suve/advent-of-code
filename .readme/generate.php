@@ -24,6 +24,13 @@ function read_json_file($path) {
 chdir(__DIR__);
 
 $languages = read_json_file('languages.json');
+foreach($languages as $ext => $lang) {
+	if(!file_exists("$ext.png")) {
+		fprintf(STDERR, "Language \"$lang\" (.$ext) is missing its icon (file \"$ext.png\" not found)\n");
+		exit(1);
+	}
+}
+
 $solutions = read_json_file('solutions.json');
 $header = read_file('header.md');
 
