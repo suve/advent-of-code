@@ -59,6 +59,6 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **22½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus2.c) |
 | **23** | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day23/coprocessor.pas) |
 | **23½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day23/optimised.c) |
-| **24** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
+| **24** | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2019/day24/bug-life.pas) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
 | **24½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
 | **25** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day25/turing-machine.php) |
