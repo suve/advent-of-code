@@ -1,4 +1,7 @@
 {
+	"2020": [
+		"expenses1.ss", "expenses2.ss"
+	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
 		"intcode.py", "intcode2.py",
