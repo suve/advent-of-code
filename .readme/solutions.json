@@ -1,6 +1,7 @@
 {
 	"2020": [
-		"expenses1.ss", "expenses2.ss"
+		"expenses1.ss", "expenses2.ss",
+		"passwords.awk", "passwords2.awk"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
