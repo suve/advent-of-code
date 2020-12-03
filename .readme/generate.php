@@ -74,6 +74,12 @@ for($i = 0; $i < 49; ++$i) {
 			exit(1);
 		}
 
+		$path = $year . "/day" . str_pad($dayNo, 2, '0', STR_PAD_LEFT) . "/" . $file;
+		if(!file_exists("../" . $path)) {
+			fprintf(STDERR, "File \"%s\" not found\n", $path);
+			exit(1);
+		}
+
 		$lang = $languages[$ext];
 		$path = $year . '/day' . ($dayNo < 10 ? '0' : '') . $dayNo . '/' . $file;
 		

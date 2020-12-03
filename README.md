@@ -43,13 +43,13 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **14½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day14/recipes.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day14/knot-again.c) |
 | **15** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
 | **15½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
-| **16** | | [![Go](https://github.com/suve/advent-of-code/raw/master/.readme/go.png)](2019/day16/fft.go) | | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
-| **16½** | | | | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
-| **17** | | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock.php) |
-| **17½** | | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock2.php) |
-| **18** | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet.pas) |
-| **18½** | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet2.pas) |
-| **19** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
+| **16** | | [![Go](https://github.com/suve/advent-of-code/raw/master/.readme/go.png)](2019/day16/fft.go) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day16/opcodes.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
+| **16½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day16/opcodes.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
+| **17** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day17/water-sdl.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock.php) |
+| **17½** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day17/water-sdl.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock2.php) |
+| **18** | | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day18/settlers.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet.pas) |
+| **18½** | | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day18/settlers2.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet2.pas) |
+| **19** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day19/iptr.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
 | **19½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
 | **20** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles.c) |
 | **20½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles2.c) |
@@ -57,8 +57,8 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **21½** | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **22** | | [![C++](https://github.com/suve/advent-of-code/raw/master/.readme/cpp.png)](2019/day22/cards.cpp) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus.c) |
 | **22½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus2.c) |
-| **23** | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day23/coprocessor.pas) |
+| **23** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day23/nanobots.c) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day23/coprocessor.pas) |
 | **23½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day23/optimised.c) |
 | **24** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2019/day24/bug-life.pas) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
 | **24½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
-| **25** | | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day25/turing-machine.php) |
+| **25** | | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day25/constellations.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day25/turing-machine.php) |

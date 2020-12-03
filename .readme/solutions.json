@@ -46,16 +46,16 @@
 		"carts.c", "carts.c",
 		"recipes.c", "recipes.c",
 		null, null,
+		"opcodes.c", "opcodes.c",
+		"water-sdl.c", "water-sdl.c",
+		"settlers.rs", "settlers2.rs",
+		"iptr.c", null,
 		null, null,
 		null, null,
 		null, null,
+		"nanobots.c", null,
 		null, null,
-		null, null,
-		null, null,
-		null, null,
-		null, null,
-		null, null,
-		null
+		"constellations.rs"
 	],
 	"2017": [
 		"captcha.sh", "captcha.sh",
