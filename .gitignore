@@ -3,6 +3,9 @@
 !/**/
 !*.*
 
+# Exceptions to the "no extension-less files" rule
+!Makefile
+
 # Ignore compilation leftovers
 *.a
 *.class
