@@ -2,7 +2,8 @@
 	"2020": [
 		"expenses1.ss", "expenses2.ss",
 		"passwords.awk", "passwords2.awk",
-		"trees.awk", "trees.awk"
+		"trees.awk", "trees.awk",
+		"passports.py", "valid-passports.py"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
