@@ -4,7 +4,8 @@
 		"passwords.awk", "passwords2.awk",
 		"trees.awk", "trees.awk",
 		"passports.py", "valid-passports.py",
-		"boarding-pass.sh", "boarding-pass.sh"
+		"boarding-pass.sh", "boarding-pass.sh",
+		"customs.c", "customs.c"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
