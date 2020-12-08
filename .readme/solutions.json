@@ -6,7 +6,8 @@
 		"passports.py", "valid-passports.py",
 		"boarding-pass.sh", "boarding-pass.sh",
 		"customs.c", "customs.c",
-		"bags.php", "bags.php"
+		"bags.php", "bags.php",
+		"console.rs", "part2.sh"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
