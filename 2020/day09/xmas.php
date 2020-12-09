@@ -75,6 +75,9 @@ function p2_cut_start($numbers, $sum, $search) {
 	if($sum === $search) return $numbers;
 	if($sum < $search) return null;
 
+	$res = p2_cut_end($numbers, $sum, $search);
+	if($res !== null) return $res;
+
 	while(count($numbers) > 2) {
 		$sum -= array_shift($numbers);
 		if($sum < $search) return null;
