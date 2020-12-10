@@ -8,7 +8,8 @@
 		"customs.c", "customs.c",
 		"bags.php", "bags.php",
 		"console.rs", "part2.sh",
-		"xmas.php", "xmas.php"
+		"xmas.php", "xmas.php",
+		"jolts.sh", "daisy-chain.php"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
