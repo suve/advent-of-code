@@ -9,7 +9,8 @@
 		"bags.php", "bags.php",
 		"console.rs", "part2.sh",
 		"xmas.php", "xmas.php",
-		"jolts.sh", "daisy-chain.php"
+		"jolts.sh", "daisy-chain.php",
+		"seats.rs", "seats2.rs"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
