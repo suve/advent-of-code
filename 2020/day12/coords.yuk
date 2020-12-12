@@ -1,0 +1,62 @@
+#!/usr/local/bin/awful
+
+!fun :rotate-left $dir $degrees
+	!while :gt &degrees i0
+		:sub &degrees i90
+
+		!if :eq &dir s'N'
+			:set &dir s'W'
+		!elif :eq &dir s'W'
+			:set &dir s'S'
+		!elif :eq &dir s'S'
+			:set &dir s'E'
+		!elif :eq &dir s'E'
+			:set &dir s'N'
+		!else
+			:writeln s-Something's wrong, current ship direction is "- &dir s-"-
+			:exit i1
+		!fi
+	!done
+	!return &dir
+!nuf
+
+!fun :rotate-right $dir $degrees
+	!return :rotate-left $dir :sub i360 $degrees
+!nuf
+
+
+:set &x &y i0
+:set &dir s'E'
+
+!while :not :stdin-eof
+	:set &line s''
+	:readln &line
+
+	:set &instruction :str-sub $line i1 i1
+	:set &argument :mkint :str-sub $line i2
+
+	!if :eq &instruction s'F'
+		:set &instruction &dir
+	!fi
+
+	!if :eq &instruction s'N'
+		:add &y &argument
+	!elif :eq &instruction s'E'
+		:add &x &argument
+	!elif :eq &instruction s'S'
+		:sub &y &argument
+	!elif :eq &instruction s'W'
+		:sub &x &argument
+	!elif :eq &instruction s'L'
+		:set &dir :rotate-left $dir $argument
+	!elif :eq &instruction s'R'
+		:set &dir :rotate-right $dir $argument
+	!else
+		:writeln s'Unrecognized instruction: "' $instruction $argument ss"s
+		:exit i1
+	!fi
+!done
+
+:writeln s'x: ' $x
+:writeln s'y: ' $y
+:writeln s'dist: ' :add ( :abs $x | :abs $y )

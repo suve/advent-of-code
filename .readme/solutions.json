@@ -10,7 +10,8 @@
 		"console.rs", "part2.sh",
 		"xmas.php", "xmas.php",
 		"jolts.sh", "daisy-chain.php",
-		"seats.rs", "seats2.rs"
+		"seats.rs", "seats2.rs",
+		"coords.yuk", "waypoint.yuk"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",

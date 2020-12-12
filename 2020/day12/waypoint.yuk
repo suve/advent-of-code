@@ -1,0 +1,57 @@
+#!/usr/local/bin/awful
+
+!fun :rotate-left &x &y $degrees
+	!if :ge $degrees i180
+		:sub &degrees i180
+		:set &x :sub i0 $x
+		:set &y :sub i0 $y
+	!fi
+
+	!if :ge $degrees i90
+		:sub &degrees i90
+		:set &temp $x
+		:set &x :sub i0 $y
+		:set &y $temp
+	!fi
+!nuf
+
+!fun :rotate-right &x &y $degrees
+	:rotate-left &x &y :sub i360 $degrees
+!nuf
+
+
+:set &sx &sy i0
+:set &wx i10
+:set &wy i1
+
+!while :not :stdin-eof
+	:set &line s''
+	:readln &line
+
+	:set &instruction :str-sub $line i1 i1
+	:set &argument :mkint :str-sub $line i2
+
+	!if :eq &instruction s'N'
+		:add &wy &argument
+	!elif :eq &instruction s'E'
+		:add &wx &argument
+	!elif :eq &instruction s'S'
+		:sub &wy &argument
+	!elif :eq &instruction s'W'
+		:sub &wx &argument
+	!elif :eq &instruction s'L'
+		:rotate-left &wx &wy $argument
+	!elif :eq &instruction s'R'
+		:rotate-right &wx &wy $argument
+	!elif :eq &instruction s'F'
+		:add &sx :mul $wx $argument
+		:add &sy :mul $wy $argument
+	!else
+		:writeln s'Unrecognized instruction: "' $instruction $argument ss"s
+		:exit i1
+	!fi
+!done
+
+:writeln s'x: ' $sx
+:writeln s'y: ' $sy
+:writeln s'dist: ' :add ( :abs $sx | :abs $sy )
