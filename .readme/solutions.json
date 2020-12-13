@@ -11,7 +11,8 @@
 		"xmas.php", "xmas.php",
 		"jolts.sh", "daisy-chain.php",
 		"seats.rs", "seats2.rs",
-		"coords.yuk", "waypoint.yuk"
+		"coords.yuk", "waypoint.yuk",
+		"buses.js", "timestamp.php"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
