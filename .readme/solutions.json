@@ -12,7 +12,8 @@
 		"jolts.sh", "daisy-chain.php",
 		"seats.rs", "seats2.rs",
 		"coords.yuk", "waypoint.yuk",
-		"buses.js", "timestamp.php"
+		"buses.js", "timestamp.php",
+		"bitmask.rs", "bitmask2.rs"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
