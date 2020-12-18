@@ -15,7 +15,9 @@
 		"buses.js", "timestamp.php",
 		"bitmask.rs", "bitmask2.rs",
 		"numbers.rs", "numbers.rs",
-		"tickets.php", "tickets.php"
+		"tickets.php", "tickets.php",
+		null, null,
+		"math.php", "math.php"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
