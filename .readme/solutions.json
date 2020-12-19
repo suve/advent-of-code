@@ -17,7 +17,8 @@
 		"numbers.rs", "numbers.rs",
 		"tickets.php", "tickets.php",
 		"cubes3.rs", "cubes4.rs",
-		"math.php", "math.php"
+		"math.php", "math.php",
+		"rules.php", "rules.php"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
