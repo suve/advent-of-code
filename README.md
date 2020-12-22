@@ -55,8 +55,8 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **20½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles2.c) |
 | **21** | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **21½** | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
-| **22** | | [![C++](https://github.com/suve/advent-of-code/raw/master/.readme/cpp.png)](2019/day22/cards.cpp) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus.c) |
-| **22½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus2.c) |
+| **22** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/kombat.php) | [![C++](https://github.com/suve/advent-of-code/raw/master/.readme/cpp.png)](2019/day22/cards.cpp) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus.c) |
+| **22½** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/rekombat.php) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus2.c) |
 | **23** | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day23/nanobots.c) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day23/coprocessor.pas) |
 | **23½** | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day23/optimised.c) |
 | **24** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2019/day24/bug-life.pas) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
