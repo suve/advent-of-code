@@ -21,7 +21,8 @@
 		"rules.php", "rules.php",
 		null, null,
 		null, null,
-		"kombat.php", "rekombat.php"
+		"kombat.php", "rekombat.php",
+		"cups.pas", "one-crab-million-cups.pas"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
