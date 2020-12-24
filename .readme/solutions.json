@@ -22,7 +22,8 @@
 		null, null,
 		null, null,
 		"kombat.php", "rekombat.php",
-		"cups.pas", "one-crab-million-cups.pas"
+		"cups.pas", "one-crab-million-cups.pas",
+		"tiles.rs", "tiles.rs"
 	],
 	"2019": [
 		"fuel.sh", "more-fuel.sh",
