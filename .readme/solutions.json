@@ -67,7 +67,7 @@
 		"intcode.py", "intcode.py",
 		"gravity.go", null,
 		"runner.php", null,
-		"one-fuel.php", null,
+		"ore-to-fuel.php", "ore-to-fuel.php",
 		null, null,
 		"fft.go", null,
 		null, null,
