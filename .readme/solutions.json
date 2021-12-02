@@ -1,7 +1,7 @@
 {
 	"2021": [
 		"sonar.sh", "triple-sonar.sh",
-		null, null,
+		"submarine.awk", "submarine.awk",
 		null, null,
 		null, null,
 		null, null,
