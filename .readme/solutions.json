@@ -2,7 +2,7 @@
 	"2021": [
 		"sonar.sh", "triple-sonar.sh",
 		"submarine.awk", "submarine.awk",
-		"power.sh", null,
+		"power.sh", "oxygen.php",
 		null, null,
 		null, null,
 		null, null,
