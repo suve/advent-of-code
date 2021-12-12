@@ -61,7 +61,7 @@ struct Map read_input(void) {
 	return m;
 }
 
-int count_paths_r(struct Map *m, int current, int *visited) {
+int count_paths_p1_r(struct Map *m, int current, int *visited) {
 	if(current == END_INDEX) return 1;
 	
 	int count = 0;
@@ -71,21 +71,50 @@ int count_paths_r(struct Map *m, int current, int *visited) {
 			memcpy(visited_cpy, visited, sizeof(visited_cpy));
 
 			if(!m->is_big[current]) visited_cpy[current] = 1;
-			count += count_paths_r(m, i, visited_cpy);
+			count += count_paths_p1_r(m, i, visited_cpy);
 		}
 	}
 	return count;
 }
 
-int count_paths(struct Map *m) {
+int count_paths_p1(struct Map *m) {
 	int visited[MAX_CAVES];
 	memset(visited, 0, sizeof(visited));
-	return count_paths_r(m, START_INDEX, visited);
+	return count_paths_p1_r(m, START_INDEX, visited);
+} 
+
+int count_paths_p2_r(struct Map *m, int current, int *visited_before, int small_twice_before) {
+	if(current == END_INDEX) return 1;
+	
+	int count = 0;
+	for(int i = 0; i < m->count; ++i) {
+		if(!m->connections[current][i]) continue;
+
+		int small_twice_now = small_twice_before;
+		if((!m->is_big[i]) && (visited_before[i])) {
+			if((i == START_INDEX) || (i == END_INDEX)) continue; // These can only be visited once
+			if(small_twice_before) continue;
+			small_twice_now = 1;
+		}
+
+		int visited_now[MAX_CAVES];
+		memcpy(visited_now, visited_before, sizeof(visited_now));
+
+		if(!m->is_big[current]) visited_now[current] = 1;
+		count += count_paths_p2_r(m, i, visited_now, small_twice_now);
+	}
+	return count;
+}
+
+int count_paths_p2(struct Map *m) {
+	int visited[MAX_CAVES];
+	memset(visited, 0, sizeof(visited));
+	return count_paths_p2_r(m, START_INDEX, visited, 0);
 } 
 
 int main(void) {
 	struct Map m = read_input();
-	int count = count_paths(&m);
-	printf("Part1: %d\n", count);
+	printf("Part1: %d\n", count_paths_p1(&m));
+	printf("Part2: %d\n", count_paths_p2(&m));
 	return 0;
 }

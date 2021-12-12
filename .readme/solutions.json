@@ -11,7 +11,7 @@
 		"smoke.c", "smoke.c",
 		"braces.rs", "braces.rs",
 		"octopi.c", "octopi.c",
-		"caves.c", null,
+		"caves.c", "caves.c",
 		null, null,
 		null, null,
 		null, null,
