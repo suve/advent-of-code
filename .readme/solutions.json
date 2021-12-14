@@ -13,7 +13,7 @@
 		"octopi.c", "octopi.c",
 		"caves.c", "caves.c",
 		"fold.php", "fold.php",
-		null, null,
+		"polymer.c", null,
 		null, null,
 		null, null,
 		null, null,
