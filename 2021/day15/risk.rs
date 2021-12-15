@@ -46,7 +46,7 @@ fn read_input() -> Map {
 	};
 }
 
-fn find_route(map: &Map) -> usize {
+fn calc_cost(map: &Map, scale: usize) -> usize {
 	use std::cmp::Reverse;
 
 	#[derive(Eq, Ord, PartialEq, PartialOrd)]
@@ -63,13 +63,14 @@ fn find_route(map: &Map) -> usize {
 	}));
 
 	let mut parent = HashMap::<Coords, Coords>::new();
+	let dest = (map.size * (scale as isize)) - 1;
 	loop {
 		let current = match queue.pop() {
 			Some(value) => value.0,
 			None => panic!("Ran out of coordinates to check"),
 		};
 
-		if current.coords.x == (map.size - 1) && current.coords.y == (map.size - 1) {
+		if current.coords.x == dest && current.coords.y == dest {
 			return current.cost;
 		}
 		if parent.contains_key(&current.coords) {
@@ -84,13 +85,23 @@ fn find_route(map: &Map) -> usize {
 			Coords { x: current.coords.x, y: current.coords.y - 1 },
 		];
 		for next in possibilities {
-			let value = match map.data.get(&next) {
-				Some(valref) => *valref,
-				None => continue,
+			if next.x < 0 || next.x > dest || next.y < 0 || next.y > dest { 
+				continue
+			}
+
+			let next_scaled = Coords {
+				x: next.x % map.size,
+				y: next.y % map.size,
 			};
+			let mut next_value = *(map.data.get(&next_scaled).unwrap()) as usize;
+			next_value += (next.x / map.size) as usize;
+			next_value += (next.y / map.size) as usize;
+			while next_value >= 10 {
+				next_value -= 9 // 10 is supposed to wrap back to 1, not 0
+			}
 
 			queue.push(Reverse(Candidate {
-				cost: current.cost + (value as usize),
+				cost: current.cost + next_value,
 				coords: next,
 				parent: current.coords
 			}));
@@ -100,6 +111,7 @@ fn find_route(map: &Map) -> usize {
 
 fn main() {
 	let map = read_input();
-	println!("Part1: {}", find_route(&map));
+	println!("Part1: {}", calc_cost(&map, 1));
+	println!("Part2: {}", calc_cost(&map, 5));
 }
 
