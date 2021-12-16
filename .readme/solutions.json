@@ -15,7 +15,7 @@
 		"fold.php", "fold.php",
 		"polymer.c", "polypair.c",
 		"risk.rs", "risk.rs",
-		"bits.pas", null,
+		"bits.pas", "bits.pas",
 		null, null,
 		null, null,
 		null, null,

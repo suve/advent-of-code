@@ -45,42 +45,131 @@ Begin
 	end
 End;
 
+Type
+	TPacketData = record
+		Length: SizeInt;
+		Value, VersionSum: NativeInt
+	end;
+
+Function CalcPacketValue(PacketType: NativeInt; Current, Possible: NativeInt): NativeInt;
+Begin
+	Case PacketType of
+		0: Result := Current + Possible;
+		1: Result := Current * Possible;
+		2: begin
+			If Current < Possible then
+				Result := Current
+			else
+				Result := Possible
+		end;
+		3: begin
+			If Current > Possible then
+				Result := Current
+			else
+				Result := Possible
+		end;
+		5: begin
+			If Current > Possible then
+				Result := 1
+			else
+				Result := 0
+		end;
+		6: begin
+			If Current < Possible then
+				Result := 1
+			else
+				Result := 0
+		end;
+		7: begin
+			If Current = Possible then
+				Result := 1
+			else
+				Result := 0
+		end;
+		Otherwise begin
+			Writeln(stderr, 'Unrecognized packet type ', PacketType);
+			Halt(1)
+		end
+	end		
+End;
+
+Function ProcessPacket(Bits: AnsiString; Pos: NativeInt): TPacketData;
+Var
+	PacketLen: SizeInt;
+	PacketVer, PacketType, PacketValue: NativeInt;
+	BitGroup, VersionSum: NativeInt;
+	SubpacketCount, SubpacketLen: NativeInt;
+	SubpacketData: TPacketData;
+Begin
+	PacketVer := BitsToDecimal(Bits, Pos, 3);
+	PacketType := BitsToDecimal(Bits, Pos + 3, 3);
+	
+	PacketLen := 6;
+	PacketValue := 0;
+	VersionSum := PacketVer;
+
+	If PacketType = 4 then begin
+		Repeat
+			BitGroup := BitsToDecimal(Bits, Pos + PacketLen, 5);
+			PacketValue := (PacketValue * 16) + (BitGroup mod 16);
+			PacketLen += 5
+		Until BitGroup < 16
+	end else begin
+		If Bits[Pos + PacketLen] = '0' then begin
+			SubpacketLen := BitsToDecimal(Bits, Pos + PacketLen + 1, 15);
+			PacketLen += 16;
+
+			SubpacketData := ProcessPacket(Bits, Pos + PacketLen);
+			PacketLen += SubpacketData.Length;
+			SubpacketLen -= SubpacketData.Length;
+
+			VersionSum += SubpacketData.VersionSum;
+			PacketValue := SubpacketData.Value;
+
+			While SubpacketLen > 0 do begin
+				SubpacketData := ProcessPacket(Bits, Pos + PacketLen);
+				PacketLen += SubpacketData.Length;
+				SubpacketLen -= SubpacketData.Length;
+
+				VersionSum += SubpacketData.VersionSum;
+				PacketValue := CalcPacketValue(PacketType, PacketValue, SubpacketData.Value)
+			end
+		end else begin
+			SubpacketLen := BitsToDecimal(Bits, Pos + PacketLen + 1, 11);
+			PacketLen += 12;
+
+			SubpacketData := ProcessPacket(Bits, Pos + PacketLen);
+			PacketLen += SubpacketData.Length;
+			VersionSum += SubpacketData.VersionSum;
+			PacketValue := SubpacketData.Value;
+			
+			For SubpacketCount := 2 to SubpacketLen do begin	
+				SubpacketData := ProcessPacket(Bits, Pos + PacketLen);
+				PacketLen += SubpacketData.Length;
+				VersionSum += SubpacketData.VersionSum;
+
+				PacketValue := CalcPacketValue(PacketType, PacketValue, SubpacketData.Value)
+			end
+		end;
+	end;
+
+	Result.Length := PacketLen;
+	Result.Value := PacketValue;
+	Result.VersionSum := VersionSum
+End;
+
 Procedure ProcessLine(Hex: AnsiString);
 Var
 	Bits: AnsiString;
-	BitCount, Pos, PacketLen: SizeInt;
-	PacketVer, PacketType: NativeInt;
-	BitGroup, VersionSum: NativeInt;
+	Packet: TPacketData;
 Begin
-	VersionSum := 0;
-
 	Bits := HexToBin(Hex);
-	BitCount := Length(Bits);
+	Packet := ProcessPacket(Bits, 1);
 
-	Pos := 1;
-	While Pos <= (BitCount - 6) do begin
-		PacketVer := BitsToDecimal(Bits, Pos, 3);
-		PacketType := BitsToDecimal(Bits, Pos + 3, 3);
-		PacketLen := 6;
-
-		If PacketType = 4 then begin
-			Repeat
-				BitGroup := BitsToDecimal(Bits, Pos + PacketLen, 5);
-				PacketLen += 5
-			Until BitGroup < 16
-		end else begin
-			If Bits[Pos + PacketLen] = '0' then
-				PacketLen += 15
-			else
-				PacketLen += 11;
-			PacketLen += 1;
-		end;
-
-		VersionSum += PacketVer;
-		Pos += PacketLen
-	end;
-
-	Writeln(Hex, ' -> ', VersionSum)
+	Writeln(Hex);
+	Writeln('Part1: ', Packet.VersionSum);
+	Writeln('Part2: ', Packet.Value);
+	Writeln()
 End;
 
 Var
