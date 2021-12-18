@@ -17,7 +17,7 @@
 		"risk.rs", "risk.rs",
 		"bits.pas", "bits.pas",
 		"trajectory.c", "trajectory.c",
-		"addition.c", null,
+		"addition.c", "magnitude.sh",
 		null, null,
 		null, null,
 		null, null,
