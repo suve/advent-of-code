@@ -9,6 +9,7 @@ and (partly) on what I thought was the best tool for solving a particular puzzle
 I drop the code and don't spend any more time on it. As such, some of the stuff you see here might quite literally
 be broken, as in "it worked with my input" – but might fail with yours.
 
+
 ## Solutions
 
 | Day | 2021 | 2020 | 2019 | 2018 | 2017 |
@@ -62,3 +63,23 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **24** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day24/tiles.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2019/day24/bug-life.pas) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
 | **24½** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day24/tiles.rs) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
 | **25** | | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2020/day25/handshake.sh) | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day25/constellations.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day25/turing-machine.php) |
+
+
+## Stats
+
+| Language | Solutions | Percentage |
+| :---: | ---: | ---: |
+| C | 48 | 24.4% |
+| PHP | 35 | 17.8% |
+| Bash | 25 | 12.7% |
+| Rust | 22 | 11.2% |
+| Awful | 16 | 8.1% |
+| Pascal | 16 | 8.1% |
+| Python | 14 | 7.1% |
+| AWK | 6 | 3.0% |
+| Go | 4 | 2.0% |
+| Java | 4 | 2.0% |
+| C♯ | 2 | 1.0% |
+| JavaScript | 2 | 1.0% |
+| SurgeScript | 2 | 1.0% |
+| C++ | 1 | 0.5% |
