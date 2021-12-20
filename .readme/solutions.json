@@ -19,7 +19,7 @@
 		"trajectory.c", "trajectory.c",
 		"addition.c", "magnitude.sh",
 		null, null,
-		null, null,
+		"enhance.c", "enhance.c",
 		null, null,
 		null, null,
 		null, null,
