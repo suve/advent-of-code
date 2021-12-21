@@ -20,7 +20,7 @@
 		"addition.c", "magnitude.sh",
 		null, null,
 		"enhance.c", "enhance.c",
-		"deterministic-dice.yuk", null,
+		"deterministic-dice.yuk", "dirac-dice.rs",
 		null, null,
 		null, null,
 		null, null,

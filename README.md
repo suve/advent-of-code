@@ -55,7 +55,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **20** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles.c) |
 | **20½** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles2.c) |
 | **21** | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2021/day21/deterministic-dice.yuk) | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
-| **21½** | | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
+| **21½** | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day21/dirac-dice.rs) | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **22** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/kombat.php) | [![C++](https://github.com/suve/advent-of-code/raw/master/.readme/cpp.png)](2019/day22/cards.cpp) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus.c) |
 | **22½** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/rekombat.php) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus2.c) |
 | **23** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2020/day23/cups.pas) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day23/nanobots.c) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day23/coprocessor.pas) |
@@ -69,13 +69,13 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage |
 | :---: | ---: | ---: |
-| C | 48 | 24.2% |
-| PHP | 35 | 17.7% |
+| C | 48 | 24.1% |
+| PHP | 35 | 17.6% |
 | Bash | 25 | 12.6% |
-| Rust | 22 | 11.1% |
-| Awful | 17 | 8.6% |
-| Pascal | 16 | 8.1% |
-| Python | 14 | 7.1% |
+| Rust | 23 | 11.6% |
+| Awful | 17 | 8.5% |
+| Pascal | 16 | 8.0% |
+| Python | 14 | 7.0% |
 | AWK | 6 | 3.0% |
 | Go | 4 | 2.0% |
 | Java | 4 | 2.0% |
