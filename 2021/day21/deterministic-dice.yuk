@@ -1,0 +1,56 @@
+#!/usr/local/bin/awful
+
+!const =MAX_SCORE i1000
+!const =DICE_LIMIT i100
+!const =POS_LIMIT i10
+
+!fun :read-input
+	:set &s1 &s2 &s3 &s4 s''
+	:set &value i0
+	:read &s1 &s2 &s3 &s4 &value
+	!return $value
+!nuf
+
+!fun :roll &die $times
+	:set &result i0
+	
+	!while :lt $i $times
+		:add &result $die i1
+		:add &die i1
+		:mod &die =DICE_LIMIT
+		:add &i i1
+	!done
+
+	!return $result
+!nuf 
+
+:set &p1_pos :sub (:read-input) i1
+:set &p2_pos :sub (:read-input) i1
+
+:set &p1_score i0
+:set &p2_score i0
+
+:set &die i0
+:set &roll_count i0
+
+!while i1
+	:add &roll_count i3
+	:set &p1_pos :mod (:add $p1_pos :roll &die i3) =POS_LIMIT
+	:add &p1_score $p1_pos i1
+	!if :ge $p1_score =MAX_SCORE
+		!break
+	!fi
+
+	:add &roll_count i3
+	:set &p2_pos :mod (:add $p2_pos :roll &die i3) =POS_LIMIT
+	:add &p2_score $p2_pos i1
+	!if :ge $p2_score =MAX_SCORE
+		!break
+	!fi
+!done
+
+!if :gt $p1_score $p2_score
+	:writeln s'Part1: ' $p2_score s' * ' $roll_count s' = ' :mul $p2_score $roll_count
+!else
+	:writeln s'Part1: ' $p1_score s' * ' $roll_count s' = ' :mul $p1_score $roll_count
+!fi

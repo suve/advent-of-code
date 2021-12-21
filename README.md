@@ -54,7 +54,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **19½** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day19/rules.php) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
 | **20** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles.c) |
 | **20½** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles2.c) |
-| **21** | | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
+| **21** | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2021/day21/deterministic-dice.yuk) | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **21½** | | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **22** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/kombat.php) | [![C++](https://github.com/suve/advent-of-code/raw/master/.readme/cpp.png)](2019/day22/cards.cpp) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus.c) |
 | **22½** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/rekombat.php) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus2.c) |
@@ -69,11 +69,11 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage |
 | :---: | ---: | ---: |
-| C | 48 | 24.4% |
-| PHP | 35 | 17.8% |
-| Bash | 25 | 12.7% |
-| Rust | 22 | 11.2% |
-| Awful | 16 | 8.1% |
+| C | 48 | 24.2% |
+| PHP | 35 | 17.7% |
+| Bash | 25 | 12.6% |
+| Rust | 22 | 11.1% |
+| Awful | 17 | 8.6% |
 | Pascal | 16 | 8.1% |
 | Python | 14 | 7.1% |
 | AWK | 6 | 3.0% |
