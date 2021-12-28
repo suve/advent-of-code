@@ -62,17 +62,17 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **23½** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2020/day23/one-crab-million-cups.pas) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day23/optimised.c) |
 | **24** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day24/tiles.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2019/day24/bug-life.pas) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
 | **24½** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day24/tiles.rs) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day24/bridge.c) |
-| **25** | | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2020/day25/handshake.sh) | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day25/constellations.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day25/turing-machine.php) |
+| **25** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day25/cucumbers.c) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2020/day25/handshake.sh) | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day25/constellations.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day25/turing-machine.php) |
 
 
 ## Stats
 
 | Language | Solutions | Percentage |
 | :---: | ---: | ---: |
-| C | 48 | 24.1% |
-| PHP | 35 | 17.6% |
-| Bash | 25 | 12.6% |
-| Rust | 23 | 11.6% |
+| C | 49 | 24.5% |
+| PHP | 35 | 17.5% |
+| Bash | 25 | 12.5% |
+| Rust | 23 | 11.5% |
 | Awful | 17 | 8.5% |
 | Pascal | 16 | 8.0% |
 | Python | 14 | 7.0% |
