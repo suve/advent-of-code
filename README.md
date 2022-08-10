@@ -67,19 +67,19 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 ## Stats
 
-| Language | Solutions | Percentage |
-| :---: | ---: | ---: |
-| C | 49 | 24.5% |
-| PHP | 35 | 17.5% |
-| Bash | 25 | 12.5% |
-| Rust | 23 | 11.5% |
-| Awful | 17 | 8.5% |
-| Pascal | 16 | 8.0% |
-| Python | 14 | 7.0% |
-| AWK | 6 | 3.0% |
-| Go | 4 | 2.0% |
-| Java | 4 | 2.0% |
-| C♯ | 2 | 1.0% |
-| JavaScript | 2 | 1.0% |
-| SurgeScript | 2 | 1.0% |
-| C++ | 1 | 0.5% |
+| Language | Solutions | Percentage | Lines of code | Percentage |
+| :---: | ---: | ---: | ---: | ---: |
+| C | 49 | 24.5% | 6.6k | 30.9% |
+| PHP | 35 | 17.5% | 3.2k | 15.0% |
+| Bash | 25 | 12.5% | 1.3k | 6.1% |
+| Rust | 23 | 11.5% | 2.8k | 13.1% |
+| Awful | 17 | 8.5% | 2.0k | 9.1% |
+| Pascal | 16 | 8.0% | 2.3k | 10.7% |
+| Python | 14 | 7.0% | 1.7k | 8.0% |
+| AWK | 6 | 3.0% | 164 | 0.8% |
+| Go | 4 | 2.0% | 693 | 3.2% |
+| Java | 4 | 2.0% | 139 | 0.6% |
+| C♯ | 2 | 1.0% | 288 | 1.3% |
+| JavaScript | 2 | 1.0% | 75 | 0.3% |
+| SurgeScript | 2 | 1.0% | 74 | 0.3% |
+| C++ | 1 | 0.5% | 87 | 0.4% |

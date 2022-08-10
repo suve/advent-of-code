@@ -20,6 +20,10 @@ function read_json_file($path) {
 	return $data;
 }
 
+function count_lines_in_file($path) {
+	return count(explode("\n", file_get_contents($path)));
+}
+
 
 chdir(__DIR__);
 
@@ -54,6 +58,7 @@ echo "\n";
 # -- Table header printed - output the solution list
 
 $solutionsByLanguage = [];
+$linesByLanguage = [];
 
 for($i = 0; $i < 49; ++$i) {
 	$dayNo = floor(($i / 2) + 1);
@@ -92,10 +97,11 @@ for($i = 0; $i < 49; ++$i) {
 
 		// Collect stats for later printing
 		if(!isset($solutionsByLanguage[$lang])) {
-			$solutionsByLanguage[$lang] = 1;
-		} else {
-			$solutionsByLanguage[$lang] += 1;
+			$solutionsByLanguage[$lang] = 0;
+			$linesByLanguage[$lang] = 0;
 		}
+		$solutionsByLanguage[$lang] += 1;
+		$linesByLanguage[$lang] += count_lines_in_file("../" . $path);
 	}
 	echo "\n";
 }
@@ -104,18 +110,22 @@ for($i = 0; $i < 49; ++$i) {
 
 echo "\n\n## Stats\n\n";
 
-echo '| Language | Solutions | Percentage |';
+echo '| Language | Solutions | Percentage | Lines of code | Percentage |';
 echo "\n";
 
-echo '| :---: | ---: | ---: |';
+echo '| :---: | ---: | ---: | ---: | ---: |';
 echo "\n";
 
 $statLangs = array_keys($solutionsByLanguage);
-usort($statLangs, function($a, $b) use ($solutionsByLanguage) {
+usort($statLangs, function($a, $b) use ($solutionsByLanguage, $linesByLanguage) {
 	if($solutionsByLanguage[$a] > $solutionsByLanguage[$b]) return -1;
 	if($solutionsByLanguage[$a] < $solutionsByLanguage[$b]) return +1;
 
-	// If number of solution is the same, resort to alphabetical order
+	// If number of solutions is the same, sort by lines of code
+	if($linesByLanguage[$a] > $linesByLanguage[$b]) return -1;
+	if($linesByLanguage[$a] < $linesByLanguage[$b]) return +1;
+
+	// If LoC count is identical, sort alphabetically
 	if($a < $b) return -1;
 	if($a > $b) return +1;
 
@@ -123,9 +133,18 @@ usort($statLangs, function($a, $b) use ($solutionsByLanguage) {
 });
 
 $solutionsTotal = array_sum($solutionsByLanguage);
+$linesTotal = array_sum($linesByLanguage);
+
 foreach($statLangs as $lang) {
-	$count = $solutionsByLanguage[$lang];
-	$perc = number_format($count * 100 / $solutionsTotal, 1) . '%';
-	echo "| $lang | $count | $perc |\n";
+	$solutions = $solutionsByLanguage[$lang];
+	$solPerc = number_format($solutions * 100 / $solutionsTotal, 1) . '%';
+
+	$lines = $linesByLanguage[$lang];
+	$linePerc = number_format($lines * 100 / $linesTotal, 1) . '%';
+	if($lines >= 1000) {
+		$lines = number_format($lines / 1000, 1) . 'k';
+	}
+
+	echo "| $lang | $solutions | $solPerc | $lines | $linePerc |\n";
 }
 
