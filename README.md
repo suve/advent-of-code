@@ -83,3 +83,4 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | JavaScript | 2 | 1.0% | 75 | 0.5% |
 | SurgeScript | 2 | 1.0% | 74 | 0.5% |
 | C++ | 1 | 0.5% | 87 | 0.6% |
+| **Total** | 200 | — | 14.4k | — |

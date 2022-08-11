@@ -20,6 +20,7 @@ function read_json_file($path) {
 	return $data;
 }
 
+// TODO: It would be great if this could account for includes / imports / wat'cha-wanna-call'em.
 function count_lines_in_file($path) {
 	return count(explode("\n", file_get_contents($path)));
 }
@@ -152,4 +153,9 @@ foreach($statLangs as $lang) {
 
 	echo "| $lang | $solutions | $solPerc | $lines | $linePerc |\n";
 }
+
+if($linesTotal >= 1000) {
+	$linesTotal = number_format($linesTotal / 1000, 1) . 'k';
+}
+echo "| **Total** | $solutionsTotal | — | $linesTotal | — |\n";
 
