@@ -59,6 +59,7 @@ echo "\n";
 
 $solutionsByLanguage = [];
 $linesByLanguage = [];
+$linesByFile = [];
 
 for($i = 0; $i < 49; ++$i) {
 	$dayNo = floor(($i / 2) + 1);
@@ -101,7 +102,11 @@ for($i = 0; $i < 49; ++$i) {
 			$linesByLanguage[$lang] = 0;
 		}
 		$solutionsByLanguage[$lang] += 1;
-		$linesByLanguage[$lang] += count_lines_in_file("../" . $path);
+
+		if(!isset($linesByFile[$path])) {
+			$linesByFile[$path] = count_lines_in_file("../" . $path);
+			$linesByLanguage[$lang] += $linesByFile[$path];
+		}
 	}
 	echo "\n";
 }
