@@ -1,7 +1,7 @@
 {
 	"2022": [
 		"calories.sh", "calories.sh",
-		null, null,
+		"rock-paper-scissors.sh", null,
 		null, null,
 		null, null,
 		null, null,
