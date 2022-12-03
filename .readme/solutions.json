@@ -2,7 +2,7 @@
 	"2022": [
 		"calories.sh", "calories.sh",
 		"rock-paper-scissors.sh", "rock-paper-scissors.sh",
-		"rucksacks.c", null,
+		"rucksacks.c", "rucksacks.c",
 		null, null,
 		null, null,
 		null, null,

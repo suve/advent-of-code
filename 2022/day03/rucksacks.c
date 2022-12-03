@@ -53,7 +53,7 @@ void parse_line(char *buffer, struct Rucksack *sack) {
 #define RUCKSACKS_MAX 512
 
 int main(void) {
-	int count = 0;
+	unsigned int count = 0;
 	struct Rucksack rucksack[RUCKSACKS_MAX];
 
 	char buffer[1024];
@@ -62,13 +62,36 @@ int main(void) {
 		++count;
 	}
 
-	int prio = 0;
+	unsigned int part1 = 0;
 	for(int i = 0; i < count; ++i) {
 		if(rucksack[i].duplicate >= 0) {
-			prio += rucksack[i].duplicate + 1;
+			part1 += rucksack[i].duplicate + 1;
 		}
 	}
-	printf("Part 1: %d\n", prio);
+	printf("Part 1: %u\n", part1);
+
+	unsigned int part2 = 0;
+	for(int group = 0; group < (count / 3); ++group) {
+		int present[ITEM_TYPES];
+		memset(present, 0, sizeof(present));
+
+		for(int g = 0; g < 3; ++g) {
+			struct Rucksack *sack = &rucksack[(group * 3) + g];
+			for(int i = 0; i < ITEM_TYPES; ++i) {
+				if((sack->left[i] > 0) || (sack->right[i] > 0)) {
+					present[i] += 1;
+				}
+			}
+		}
+
+		for(int i = 0; i < ITEM_TYPES; ++i) {
+			if(present[i] == 3) {
+				part2 += (i + 1);
+				break;
+			}
+		}
+	}
+	printf("Part 2: %u\n", part2);
 
 	return 0;
 }
