@@ -3,7 +3,7 @@
 		"calories.sh", "calories.sh",
 		"rock-paper-scissors.sh", "rock-paper-scissors.sh",
 		"rucksacks.c", "rucksacks.c",
-		null, null,
+		"cleanup.c", "cleanup.c",
 		null, null,
 		null, null,
 		null, null,
