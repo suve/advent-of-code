@@ -5,7 +5,7 @@
 		"rucksacks.c", "rucksacks.c",
 		"cleanup.c", "cleanup.c",
 		"cranes.php", "cranes.php",
-		null, null,
+		"packmark.c", null,
 		null, null,
 		null, null,
 		null, null,
