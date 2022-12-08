@@ -45,6 +45,40 @@ void read_input(char *data, uint *rows, uint *cols) {
 	}
 }
 
+void calc(const char *data, const uint primary_max, const uint secondary_max, uint(*const offset_func)(uint, uint, uint, uint), int *visible, uint *score) {
+	for(uint pri = 0; pri < primary_max; ++pri) {
+		char highest = '\0';
+
+		uint pos_by_height['9' + 1];
+		memset(pos_by_height, 0, sizeof(pos_by_height));
+
+		for(uint sec = 0; sec < secondary_max; ++sec) {
+			const uint offset = offset_func(pri, primary_max, sec, secondary_max);
+
+			if(data[offset] > highest) {
+				visible[offset] = 1;
+				highest = data[offset];
+			}
+
+			score[offset] *= sec - pos_by_height[data[offset]];
+			for(char c = '0'; c <= data[offset]; ++c) pos_by_height[c] = sec;
+		}
+	}
+}
+
+uint offset_left(uint y, uint rows, uint x, uint cols) {
+	return (y * cols) + x;
+}
+uint offset_right(uint y, uint rows, uint x, uint cols) {
+	return (y * cols) + (cols - x - 1);
+}
+uint offset_top(uint x, uint cols, uint y, uint rows) {
+	return (y * cols) + x;
+}
+uint offset_bottom(uint x, uint cols, uint y, uint rows) {
+	return ((rows - y - 1) * cols) + x;
+}
+
 int main(void) {
 	uint rows, cols;
 	char data[MAX_SIZE * MAX_SIZE];
@@ -53,62 +87,20 @@ int main(void) {
 	int visible[rows * cols];
 	memset(visible, 0, sizeof(visible));
 
-	for(uint y = 0; y < rows; ++y) {
-		// Check visibility from the left
-		{
-			char highest = '\0'; // cheeky
-			for(uint x = 0; x < cols; ++x) {
-				uint offset = (y*cols) + x;
-				if(data[offset] > highest) {
-					visible[offset] = 1;
-					highest = data[offset];
-				}
-			}
-		}
+	uint score[rows * cols];
+	for(uint i = 0; i < (rows * cols); ++i) score[i] = 1;
 
-		// Check visibility from the right
-		{
-			char highest = '\0'; // cheeky
-			for(uint x = cols; x > 0; --x) {
-				uint offset = (y*cols) + (x - 1);
-				if(data[offset] > highest) {
-					visible[offset] = 1;
-					highest = data[offset];
-				}
-			}
-		}
-	}
-
-	for(uint x = 0; x < cols; ++x) {
-		// Check visibility from the top
-		{
-			char highest = '\0'; // cheeky
-			for(uint y = 0; y < rows; ++y) {
-				uint offset = (y*cols) + x;
-				if(data[offset] > highest) {
-					visible[offset] = 1;
-					highest = data[offset];
-				}
-			}
-		}
-
-		// Check visibility from the bottom
-		{
-			char highest = '\0'; // cheeky
-			for(uint y = rows; y > 0; --y) {
-				uint offset = ((y-1)*cols) + x;
-				if(data[offset] > highest) {
-					visible[offset] = 1;
-					highest = data[offset];
-				}
-			}
-		}
-	}
+	calc(data, rows, cols, &offset_left, visible, score);
+	calc(data, rows, cols, &offset_right, visible, score);
+	calc(data, cols, rows, &offset_top, visible, score);
+	calc(data, cols, rows, &offset_bottom, visible, score);
 
 	uint count = 0;
+	uint best = 0;
 	for(uint i = 0; i < rows*cols; ++i) {
 		if(visible[i]) ++count;
+		if(score[i] > best) best = score[i];
 	}
 
-	printf("Part 1: %u\n", count);
+	printf("Part 1: %u\nPart 2: %u\n", count, best);
 }
