@@ -1,15 +1,60 @@
 #!/usr/bin/php
 <?php
 
-$headX = 0;
-$headY = 0;
-$tailX = 0;
-$tailY = 0;
+class Position {
+	public $x;
+	public $y;
 
-$visited = [];
-$visited[$tailY] = [];
-$visited[$tailY][$tailX] = 1;
-$count = 1;
+	public function __construct($x, $y) {
+		$this->x = $x;
+		$this->y = $y;
+	}
+
+	public function follow(Position $other) {
+		$distX = abs($other->x - $this->x);
+		$distY = abs($other->y - $this->y);
+		if(($distX < 2) && ($distY < 2)) return;
+
+		if($distX !== 0) {
+			$this->x += ($other->x > $this->x) ? +1 : -1;
+		}
+		if($distY !== 0) {
+			$this->y += ($other->y > $this->y) ? +1 : -1;
+		}
+	}
+}
+
+class History {
+	private $points;
+	private $count;
+
+	public function __construct() {
+		$this->points = [];
+		$this->count = 0;
+	}
+
+	public function track(Position $p) {
+		if(!array_key_exists($p->y, $this->points)) $this->points[$p->y] = [];
+
+		if(!array_key_exists($p->x, $this->points[$p->y])) {
+			$this->points[$p->y][$p->x] = 1;
+			$this->count += 1;
+		}
+	}
+
+	public function getCount(): int {
+		return $this->count;
+	}
+}
+
+define("SEGMENTS", 10);
+$seg = [];
+for($i = 1; $i <= SEGMENTS; ++$i) $seg[$i] = new Position(0, 0);
+
+$p1 = new History();
+$p1->track($seg[2]);
+$p2 = new History();
+$p2->track($seg[SEGMENTS]);
 
 while(($line = fgets(STDIN)) !== false) {
 	$line = trim($line);
@@ -32,28 +77,16 @@ while(($line = fgets(STDIN)) !== false) {
 	}
 
 	for($i = 0; $i < $steps; ++$i) {
-		$headX += $moveX;
-		$headY += $moveY;
+		$seg[1]->x += $moveX;
+		$seg[1]->y += $moveY;
 
-		$distX = abs($headX - $tailX);
-		$distY = abs($headY - $tailY);
-		if(($distX < 2) && ($distY < 2)) continue;
-
-		if($distX === 0) {
-			$tailY += ($headY > $tailY) ? +1 : -1;
-		} else if($distY === 0) {
-			$tailX += ($headX > $tailX) ? +1 : -1;
-		} else {
-			$tailY += ($headY > $tailY) ? +1 : -1;
-			$tailX += ($headX > $tailX) ? +1 : -1;
+		for($s = 2; $s <= SEGMENTS; ++$s) {
+			$seg[$s]->follow($seg[$s-1]);
 		}
-
-		if(!array_key_exists($tailY, $visited)) $visited[$tailY] = [];
-		if(!array_key_exists($tailX, $visited[$tailY])) {
-			$visited[$tailY][$tailX] = 1;
-			++$count;
-		}
+		$p1->track($seg[2]);
+		$p2->track($seg[SEGMENTS]);
 	}
 }
 
-echo "Part 1: ", $count, "\n";
+echo "Part 1: ", $p1->getCount(), "\n";
+echo "Part 2: ", $p2->getCount(), "\n";
