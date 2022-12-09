@@ -8,7 +8,7 @@
 		"packmark.c", "packmark.c",
 		"files.php", "files.php",
 		"trees.c", "trees.c",
-		null, null,
+		"rope.php", null,
 		null, null,
 		null, null,
 		null, null,
