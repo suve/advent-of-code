@@ -50,11 +50,13 @@ while(($line = fgets(STDIN)) !== false) {
 
 $X = 1;
 $p1 = 0;
+$p2 = '';
+$p2a = [];
 
 $instr = null;
 $instrNo = 0;
 $instrCycles = 0;
-for($cycleNo = 1; $cycleNo <= 220; ++$cycleNo) {
+for($cycleNo = 1; $cycleNo <= 240; ++$cycleNo) {
 	if($instr === null) {
 		$instr = $program[$instrNo];
 		$instrNo = ($instrNo + 1) % count($program);
@@ -65,6 +67,13 @@ for($cycleNo = 1; $cycleNo <= 220; ++$cycleNo) {
 		$p1 += $cycleNo * $X;
 	}
 
+	$pix = ($cycleNo - 1) % 40;
+	$p2 .= (abs($pix - $X) <= 1) ? '#' : '.';
+	if($pix == 39) {
+		$p2a[] = $p2;
+		$p2 = '';
+	}
+
 	$instrCycles += 1;
 	if($instrCycles === $instr->getCycleCount()) {
 		$instr->onFinished($X);
@@ -73,3 +82,5 @@ for($cycleNo = 1; $cycleNo <= 220; ++$cycleNo) {
 }
 
 echo "Part 1: ", $p1, "\n";
+echo "Part 2:\n";
+foreach($p2a as $row) echo $row, "\n";
