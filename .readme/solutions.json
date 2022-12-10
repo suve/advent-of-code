@@ -9,7 +9,7 @@
 		"files.php", "files.php",
 		"trees.c", "trees.c",
 		"rope.php", "rope.php",
-		null, null,
+		"crt.php", null,
 		null, null,
 		null, null,
 		null, null,
