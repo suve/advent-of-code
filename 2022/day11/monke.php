@@ -135,14 +135,38 @@ function parse_input() {
 	return $monkeys;
 }
 
-# -- start script proper
+# -- end of definitions, parse arguments
+
+if($argc < 1) {
+	fprintf(STDERR, "Error: You must specify mode of operation (either \"--part1\", or \"--part2\")\n");
+	die(2);
+}
+
+if($argv[1] === "--part1") {
+	$LIMIT = 20;
+	$DIV_BY = 3;
+} else if($argv[1] === "--part2") {
+	$LIMIT = 10000;
+	$DIV_BY = 1;
+} else {
+	fprintf(STDERR, "Error: Unrecognized argument \"%s\" (expected either \"--part1\", or \"--part2\")\n", $argv[1]);
+	die(2);
+}
+
+# -- args parsed, start script proper
 
 $monkeys = parse_input();
-for($round = 1; $round <= 20; ++$round) {
+
+// The proper way would be to calculate the GCD, but eh
+$modulus = 1;
+foreach($monkeys as $monke) $modulus *= $monke->div_by;
+
+for($round = 1; $round <= $LIMIT; ++$round) {
 	foreach($monkeys as $idx => $monke) {
 		foreach($monke->items as $item) {
 			$item = $monke->op->calc($item);
-			$item = floor($item / 3);
+			if($DIV_BY !== 1) $item = floor($item / $DIV_BY);
+			$item %= $modulus;
 			$dest = (($item % $monke->div_by) == 0) ? $monke->if_true : $monke->if_false;
 			$monkeys[$dest]->items[] = $item;
 		}
@@ -157,4 +181,4 @@ foreach($monkeys as $idx => $monke) {
 	$ic[] = $monke->inspection_count;
 }
 rsort($ic, SORT_NUMERIC);
-echo "Part 1: ", $ic[0] * $ic[1], "\n";
+echo "Level of monkey business: ", $ic[0] * $ic[1], "\n";
