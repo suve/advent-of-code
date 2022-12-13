@@ -28,6 +28,7 @@ function compare($a, $b) {
 
 $p1 = [];
 
+$packets = [];
 $pairNo = 1;
 while(true) {
 	$first = fgets(STDIN);
@@ -50,7 +51,33 @@ while(true) {
 	if(compare($first, $second) === -1) {
 		$p1[] = $pairNo;
 	}
+
+	array_push($packets, $first, $second);
 	++$pairNo;
 }
 
 echo "Part 1: ", array_sum($p1), " (", implode(', ', $p1), ")\n";
+
+# -- part 2
+
+$twoPack = [[2]];
+$sixPack = [[6]];
+
+array_push($packets, $twoPack, $sixPack);
+usort($packets, "compare");
+
+$twoPos = null;
+$sixPos = null;
+
+foreach($packets as $idx => $pack) {
+	if(($twoPos === null) && ($pack === $twoPack)) {
+		$twoPos = ($idx + 1);
+		if($sixPos === null) continue; else break;
+	}
+	if(($sixPos === null) && ($pack === $sixPack)) {
+		$sixPos = ($idx + 1);
+		if($twoPos === null) continue; else break;
+	}
+}
+
+echo "Part 2: ", $twoPos * $sixPos, " (", $twoPos, ", ", $sixPos, ")\n";

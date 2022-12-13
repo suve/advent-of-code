@@ -12,7 +12,7 @@
 		"crt.php", "crt.php",
 		"monke.php", "monke.php",
 		"climb.rs", "climb.rs",
-		"packets.php", null,
+		"packets.php", "packets.php",
 		null, null,
 		null, null,
 		null, null,
