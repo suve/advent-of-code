@@ -46,7 +46,7 @@ function parse_input() {
 	return [$map, $lowest];
 }
 
-function pour_that_sand(&$map, $lowest, $startX, $startY) {
+function part1(&$map, $lowest, $startX, $startY) {
 	$x = $startX;
 	$y = $startY;
 
@@ -65,9 +65,40 @@ function pour_that_sand(&$map, $lowest, $startX, $startY) {
 	}
 }
 
+function part2(&$map, $lowest, $startX, $startY) {
+	$x = $startX;
+	$y = $startY;
+	if(get_point($map, $x, $y)) return false;
+
+	while(true) {
+		if(!get_point($map, $x, $y+1)) {
+			++$y;
+		} else if(!get_point($map, $x-1, $y+1)) {
+			--$x; ++$y;
+		} else if(!get_point($map, $x+1, $y+1)) {
+			++$x; ++$y;
+		} else {
+			set_point($map, $x, $y);
+			return true;
+		}
+
+		if($y === ($lowest + 1)) {
+			set_point($map, $x, $y);
+			return true;
+		}
+	}
+}
+
 # -- script proper
 
 [$map, $lowest] = parse_input();
 
-for($i = 0; pour_that_sand($map, $lowest, 500, 0); ++$i);
+$p1map = $map;
+for($i = 0; part1($p1map, $lowest, 500, 0); ++$i);
 echo "Part 1: ", $i, "\n";
+
+$p2map = $map;
+for($i = 0; part2($p2map, $lowest, 500, 0); ++$i);
+echo "Part 2: ", $i, "\n";
+
+
