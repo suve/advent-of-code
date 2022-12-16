@@ -42,7 +42,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **13½** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day13/packets.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2021/day13/fold.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day13/timestamp.php) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day13/carts.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day13/firewall.yuk) |
 | **14** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day14/I-dont-like-sand-its-coarse-and-rough-and-irritating-and-it-gets-everywhere.php) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day14/polymer.c) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day14/bitmask.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2019/day14/ore-to-fuel.php) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day14/recipes.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day14/knot-again.c) |
 | **14½** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day14/I-dont-like-sand-its-coarse-and-rough-and-irritating-and-it-gets-everywhere.php) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day14/polypair.c) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day14/bitmask2.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2019/day14/ore-to-fuel.php) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day14/recipes.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day14/knot-again.c) |
-| **15** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day15/risk.rs) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day15/numbers.rs) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
+| **15** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day15/beacons.php) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day15/risk.rs) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day15/numbers.rs) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
 | **15½** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day15/risk.rs) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day15/numbers.rs) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day15/generators.c) |
 | **16** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2021/day16/bits.pas) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day16/tickets.php) | [![Go](https://github.com/suve/advent-of-code/raw/master/.readme/go.png)](2019/day16/fft.go) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day16/opcodes.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
 | **16½** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2021/day16/bits.pas) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day16/tickets.php) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day16/opcodes.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
@@ -69,18 +69,18 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage | Lines of code | Percentage |
 | :---: | ---: | ---: | ---: | ---: |
-| C | 57 | 25.0% | 4.4k | 28.2% |
-| PHP | 49 | 21.5% | 2.8k | 17.6% |
-| Bash | 29 | 12.7% | 1.1k | 7.2% |
-| Rust | 25 | 11.0% | 2.3k | 14.7% |
-| Awful | 17 | 7.5% | 1.1k | 6.8% |
-| Pascal | 16 | 7.0% | 1.6k | 10.2% |
-| Python | 14 | 6.1% | 1.2k | 7.5% |
+| C | 57 | 24.9% | 4.4k | 28.0% |
+| PHP | 50 | 21.8% | 2.9k | 18.1% |
+| Bash | 29 | 12.7% | 1.1k | 7.1% |
+| Rust | 25 | 10.9% | 2.3k | 14.6% |
+| Awful | 17 | 7.4% | 1.1k | 6.7% |
+| Pascal | 16 | 7.0% | 1.6k | 10.1% |
+| Python | 14 | 6.1% | 1.2k | 7.4% |
 | AWK | 6 | 2.6% | 103 | 0.7% |
-| Go | 4 | 1.8% | 475 | 3.0% |
-| Java | 4 | 1.8% | 139 | 0.9% |
+| Go | 4 | 1.7% | 475 | 3.0% |
+| Java | 4 | 1.7% | 139 | 0.9% |
 | C♯ | 2 | 0.9% | 288 | 1.8% |
 | JavaScript | 2 | 0.9% | 75 | 0.5% |
 | SurgeScript | 2 | 0.9% | 74 | 0.5% |
 | C++ | 1 | 0.4% | 87 | 0.6% |
-| **Total** | 228 | — | 15.7k | — |
+| **Total** | 229 | — | 15.8k | — |
