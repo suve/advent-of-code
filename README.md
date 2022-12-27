@@ -48,7 +48,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **16½** | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2021/day16/bits.pas) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day16/tickets.php) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day16/opcodes.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day16/dance.yuk) |
 | **17** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day17/trajectory.c) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day17/cubes3.rs) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day17/water-sdl.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock.php) |
 | **17½** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day17/trajectory.c) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day17/cubes4.rs) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day17/water-sdl.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2017/day17/spinlock2.php) |
-| **18** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day18/addition.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day18/math.php) | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day18/settlers.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet.pas) |
+| **18** | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2022/day18/cubes.sh) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day18/addition.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day18/math.php) | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day18/settlers.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet.pas) |
 | **18½** | | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2021/day18/magnitude.sh) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day18/math.php) | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2018/day18/settlers2.rs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day18/duet2.pas) |
 | **19** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day19/rules.php) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day19/iptr.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
 | **19½** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day19/rules.php) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
@@ -69,9 +69,9 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage | Lines of code | Percentage |
 | :---: | ---: | ---: | ---: | ---: |
-| C | 57 | 24.9% | 4.4k | 28.0% |
-| PHP | 50 | 21.8% | 2.9k | 18.1% |
-| Bash | 29 | 12.7% | 1.1k | 7.1% |
+| C | 57 | 24.8% | 4.4k | 28.0% |
+| PHP | 50 | 21.7% | 2.9k | 18.1% |
+| Bash | 30 | 13.0% | 1.1k | 7.2% |
 | Rust | 25 | 10.9% | 2.3k | 14.6% |
 | Awful | 17 | 7.4% | 1.1k | 6.7% |
 | Pascal | 16 | 7.0% | 1.6k | 10.1% |
@@ -83,4 +83,4 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | JavaScript | 2 | 0.9% | 75 | 0.5% |
 | SurgeScript | 2 | 0.9% | 74 | 0.5% |
 | C++ | 1 | 0.4% | 87 | 0.6% |
-| **Total** | 229 | — | 15.8k | — |
+| **Total** | 230 | — | 15.8k | — |
