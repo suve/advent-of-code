@@ -53,7 +53,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **19** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day19/rules.php) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day19/iptr.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
 | **19½** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day19/rules.php) | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day19/tubes.c) |
 | **20** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day20/mixit.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles.c) |
-| **20½** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles2.c) |
+| **20½** | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day20/mixit.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day20/enhance.c) | | | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day20/particles2.c) |
 | **21** | | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2021/day21/deterministic-dice.yuk) | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **21½** | | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day21/dirac-dice.rs) | | | | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day21/enhance.pas) |
 | **22** | | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day22/kombat.php) | [![C++](https://github.com/suve/advent-of-code/raw/master/.readme/cpp.png)](2019/day22/cards.cpp) | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2017/day22/virus.c) |
@@ -69,13 +69,13 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage | Lines of code | Percentage |
 | :---: | ---: | ---: | ---: | ---: |
-| C | 58 | 25.1% | 4.5k | 28.4% |
-| PHP | 50 | 21.6% | 2.9k | 18.0% |
-| Bash | 30 | 13.0% | 1.1k | 7.2% |
-| Rust | 25 | 10.8% | 2.3k | 14.5% |
-| Awful | 17 | 7.4% | 1.1k | 6.7% |
-| Pascal | 16 | 6.9% | 1.6k | 10.1% |
-| Python | 14 | 6.1% | 1.2k | 7.4% |
+| C | 59 | 25.4% | 4.6k | 28.6% |
+| PHP | 50 | 21.6% | 2.9k | 17.9% |
+| Bash | 30 | 12.9% | 1.1k | 7.2% |
+| Rust | 25 | 10.8% | 2.3k | 14.4% |
+| Awful | 17 | 7.3% | 1.1k | 6.7% |
+| Pascal | 16 | 6.9% | 1.6k | 10.0% |
+| Python | 14 | 6.0% | 1.2k | 7.4% |
 | AWK | 6 | 2.6% | 103 | 0.6% |
 | Go | 4 | 1.7% | 475 | 3.0% |
 | Java | 4 | 1.7% | 139 | 0.9% |
@@ -83,4 +83,4 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | JavaScript | 2 | 0.9% | 75 | 0.5% |
 | SurgeScript | 2 | 0.9% | 74 | 0.5% |
 | C++ | 1 | 0.4% | 87 | 0.5% |
-| **Total** | 231 | — | 15.9k | — |
+| **Total** | 232 | — | 15.9k | — |
