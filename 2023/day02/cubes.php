@@ -29,17 +29,29 @@ function parse_line($line) {
 	return [$gameId, $reveals];
 }
 
-$sum = 0;
+$part1 = 0;
+$part2 = 0;
 while(($line = fgets(STDIN)) !== FALSE) {
 	$line = trim($line);
 	if($line === "") continue;
 
 	[$gameId, $reveals] = parse_line($line);
+
+	$valid = TRUE;
+	$minimum = ['red' => 0, 'green' => 0, 'blue' => 0];
 	foreach($reveals as $rev) {
+		foreach(['red', 'green', 'blue'] as $colour) {
+			if($rev[$colour] > $minimum[$colour]) $minimum[$colour] = $rev[$colour];
+		}
 		if(($rev['red'] > RED) || ($rev['green'] > GREEN) || ($rev['blue'] > BLUE)) {
-			continue 2;
+			$valid = FALSE;
 		}
 	}
-	$sum += $gameId;
+
+	if($valid) $part1 += $gameId;
+
+	$power = $minimum['red'] * $minimum['green'] * $minimum['blue'];
+	$part2 += $power;
 }
-echo "Part1: ", $sum, "\n";
+echo "Part1: ", $part1, "\n";
+echo "Part2: ", $part2, "\n";
