@@ -9,7 +9,7 @@
 void read_input(char **out_data, int *out_rows) {
 	char *data = malloc(MAX_COLS * MAX_ROWS);
 	if(data == NULL) {
-		fprintf(stderr, "Failed to allocate memory\n");
+		fprintf(stderr, "Failed to allocate map memory\n");
 		exit(EXIT_FAILURE);
 	}
 	memset(data, '.', MAX_COLS * MAX_ROWS);
@@ -36,7 +36,22 @@ void read_input(char **out_data, int *out_rows) {
 	*out_rows = rows;
 }
 
-int adjacent_to_symbol(const int startX, const int endX, const int numY, const char *data, const int rows) {
+struct Symbol {
+	char sym;
+	int count;
+	int value;
+};
+
+int check_out_this_shit(
+	const int startX,
+	const int endX,
+	const int numY,
+	const char *data,
+	const int rows,
+	unsigned int *sum,
+	unsigned int value,
+	struct Symbol *symbol
+) {
 	// fprintf(stderr, "Scanning at %d-%d:%d\n", startX, endX, numY);
 	const int minY = (numY == 0) ? numY : (numY - 1);
 	const int maxY = (numY+1 == rows) ? numY : (numY + 1);
@@ -48,6 +63,14 @@ int adjacent_to_symbol(const int startX, const int endX, const int numY, const c
 			char c = data[OFFSET(x, y)];
 			if((c > '9') || ((c < '0') && (c != ' ') && (c != '.'))) {
 				// fprintf(stderr, "Found part at %d-%d:%d (symbol: '%c')\n", startX, endX, numY, c);
+				*sum += value;
+
+				struct Symbol *s = &symbol[OFFSET(x,y)];
+				s->sym = c;
+				if(s->count == 0) s->value = 1;
+				s->count += 1;
+				s->value *= value;
+
 				return 1;
 			}
 		}
@@ -59,6 +82,16 @@ int main(void) {
 	char *data;
 	int rows;
 	read_input(&data, &rows);
+
+	// Ideally I'd hold this in some growing list, but since the map is small,
+	// it's way easier to just allocate memory for each possible character
+	const size_t SYM_SIZE = (MAX_ROWS * MAX_COLS * sizeof(struct Symbol));
+	struct Symbol *sym = malloc(SYM_SIZE);
+	if(sym == NULL) {
+		fprintf(stderr, "Failed to allocate symbol table memory\n");
+		exit(EXIT_FAILURE);
+	}
+	memset(sym, 0, SYM_SIZE);
 
 	unsigned int sum = 0;
 	for(int y = 0; y < rows; ++y) {
@@ -78,18 +111,24 @@ int main(void) {
 					value = (value * 10) + (c - '0');
 					endIndex = x;
 				} else {
-					if(adjacent_to_symbol(startIndex, endIndex, y, data, rows)) {
-						sum += value;
-					}
+					check_out_this_shit(startIndex, endIndex, y, data, rows, &sum, value, sym);
 					startIndex = -1;
 				}
 			}
 		}
 
 		// Don't forget about numbers at end of the line
-		if((startIndex > 0) && (adjacent_to_symbol(startIndex, endIndex, y, data, rows))) {
-			sum += value;
+		if(startIndex > 0) { 
+			check_out_this_shit(startIndex, endIndex, y, data, rows, &sum, value, sym);
 		}
 	}
 	printf("Part1: %u\n", sum);
+
+	sum = 0;
+	for(size_t idx = 0; idx < MAX_ROWS * MAX_COLS; ++idx) {
+		if(sym[idx].sym != '*') continue;
+		if(sym[idx].count != 2) continue;
+		sum += sym[idx].value;
+	}
+	printf("Part2: %u\n", sum);
 }
