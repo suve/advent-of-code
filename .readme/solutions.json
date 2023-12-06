@@ -5,7 +5,7 @@
 		"engine.c", "engine.c",
 		"scratchcards.php", "scratchcards.php",
 		null, null,
-		"race.rs", null,
+		"race.rs", "race.rs",
 		null, null,
 		null, null,
 		null, null,
