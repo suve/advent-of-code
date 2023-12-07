@@ -27,7 +27,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | **6** | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2023/day06/race.rs) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day06/packmark.c) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day06/lanternfish.rs) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2020/day06/customs.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2019/day06/orbits.yuk) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day06/flood.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day06/realloc.yuk) |
 | **6½** | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2023/day06/race.rs) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day06/packmark.c) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2021/day06/lanternfish.rs) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2020/day06/customs.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2019/day06/orbits.yuk) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day06/flood.c) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day06/realloc.yuk) |
 | **7** | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2023/day07/cards.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day07/files.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2021/day07/crabs.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day07/bags.php) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day07/intcode.py) | [![C♯](https://github.com/suve/advent-of-code/raw/master/.readme/cs.png)](2018/day07/lotsa-steps.cs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day07/tower.pas) |
-| **7½** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day07/files.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2021/day07/crabs.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day07/bags.php) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day07/intcode-feedback.py) | [![C♯](https://github.com/suve/advent-of-code/raw/master/.readme/cs.png)](2018/day07/timed-steps.cs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day07/tower.pas) |
+| **7½** | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2023/day07/cards.rs) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day07/files.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2021/day07/crabs.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day07/bags.php) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day07/intcode-feedback.py) | [![C♯](https://github.com/suve/advent-of-code/raw/master/.readme/cs.png)](2018/day07/timed-steps.cs) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day07/tower.pas) |
 | **8** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day08/trees.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2021/day08/easy-digits.php) | [![Rust](https://github.com/suve/advent-of-code/raw/master/.readme/rs.png)](2020/day08/console.rs) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day08/image-checksum.py) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2018/day08/tree.php) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day08/cpu.yuk) |
 | **8½** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day08/trees.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2021/day08/decoder.php) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2020/day08/part2.sh) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day08/image-decode.py) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2018/day08/tree.php) | [![Awful](https://github.com/suve/advent-of-code/raw/master/.readme/yuk.png)](2017/day08/cpu.yuk) |
 | **9** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2022/day09/rope.php) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2021/day09/smoke.c) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2020/day09/xmas.php) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day09/intcode.py) | [![JavaScript](https://github.com/suve/advent-of-code/raw/master/.readme/js.png)](2018/day09/marbles.js) | [![Pascal](https://github.com/suve/advent-of-code/raw/master/.readme/pas.png)](2017/day09/stream.pas) |
@@ -69,18 +69,18 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage | Lines of code | Percentage |
 | :---: | ---: | ---: | ---: | ---: |
-| C | 61 | 25.1% | 4.7k | 28.2% |
-| PHP | 55 | 22.6% | 3.1k | 18.5% |
-| Bash | 31 | 12.8% | 1.2k | 7.2% |
-| Rust | 28 | 11.5% | 2.6k | 15.6% |
+| C | 61 | 25.0% | 4.7k | 28.1% |
+| PHP | 55 | 22.5% | 3.1k | 18.4% |
+| Bash | 31 | 12.7% | 1.2k | 7.1% |
+| Rust | 29 | 11.9% | 2.7k | 16.0% |
 | Awful | 17 | 7.0% | 1.1k | 6.4% |
 | Pascal | 16 | 6.6% | 1.6k | 9.6% |
-| Python | 14 | 5.8% | 1.2k | 7.1% |
+| Python | 14 | 5.7% | 1.2k | 7.0% |
 | AWK | 6 | 2.5% | 103 | 0.6% |
-| Go | 4 | 1.6% | 475 | 2.9% |
+| Go | 4 | 1.6% | 475 | 2.8% |
 | Java | 4 | 1.6% | 139 | 0.8% |
 | C♯ | 2 | 0.8% | 288 | 1.7% |
-| JavaScript | 2 | 0.8% | 75 | 0.5% |
+| JavaScript | 2 | 0.8% | 75 | 0.4% |
 | SurgeScript | 2 | 0.8% | 74 | 0.4% |
 | C++ | 1 | 0.4% | 87 | 0.5% |
-| **Total** | 243 | — | 16.6k | — |
+| **Total** | 244 | — | 16.7k | — |
