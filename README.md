@@ -15,7 +15,7 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | Day | 2024 | 2023 | 2022 | 2021 | 2020 | 2019 | 2018 | 2017 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **1** | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2024/day01/two-lists.sh) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2023/day01/trebuchet.sh) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2022/day01/calories.sh) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2021/day01/sonar.sh) | [![SurgeScript](https://github.com/suve/advent-of-code/raw/master/.readme/ss.png)](2020/day01/expenses1.ss) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2019/day01/fuel.sh) | [![Java](https://github.com/suve/advent-of-code/raw/master/.readme/java.png)](2018/day01/freq.java) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2017/day01/captcha.sh) |
-| **1½** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2023/day01/spelled-out.php) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2022/day01/calories.sh) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2021/day01/triple-sonar.sh) | [![SurgeScript](https://github.com/suve/advent-of-code/raw/master/.readme/ss.png)](2020/day01/expenses2.ss) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2019/day01/more-fuel.sh) | [![Java](https://github.com/suve/advent-of-code/raw/master/.readme/java.png)](2018/day01/freq2.java) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2017/day01/captcha.sh) |
+| **1½** | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2024/day01/similarity.php) | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2023/day01/spelled-out.php) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2022/day01/calories.sh) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2021/day01/triple-sonar.sh) | [![SurgeScript](https://github.com/suve/advent-of-code/raw/master/.readme/ss.png)](2020/day01/expenses2.ss) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2019/day01/more-fuel.sh) | [![Java](https://github.com/suve/advent-of-code/raw/master/.readme/java.png)](2018/day01/freq2.java) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2017/day01/captcha.sh) |
 | **2** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2023/day02/cubes.php) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2022/day02/rock-paper-scissors.sh) | [![AWK](https://github.com/suve/advent-of-code/raw/master/.readme/awk.png)](2021/day02/submarine.awk) | [![AWK](https://github.com/suve/advent-of-code/raw/master/.readme/awk.png)](2020/day02/passwords.awk) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day02/intcode.py) | [![Java](https://github.com/suve/advent-of-code/raw/master/.readme/java.png)](2018/day02/checksum.java) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2017/day02/part1.sh) |
 | **2½** | | [![PHP](https://github.com/suve/advent-of-code/raw/master/.readme/php.png)](2023/day02/cubes.php) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2022/day02/rock-paper-scissors.sh) | [![AWK](https://github.com/suve/advent-of-code/raw/master/.readme/awk.png)](2021/day02/submarine.awk) | [![AWK](https://github.com/suve/advent-of-code/raw/master/.readme/awk.png)](2020/day02/passwords2.awk) | [![Python](https://github.com/suve/advent-of-code/raw/master/.readme/py.png)](2019/day02/intcode2.py) | [![Java](https://github.com/suve/advent-of-code/raw/master/.readme/java.png)](2018/day02/findids.java) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2017/day02/part2.sh) |
 | **3** | | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2023/day03/engine.c) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2022/day03/rucksacks.c) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2021/day03/power.sh) | [![AWK](https://github.com/suve/advent-of-code/raw/master/.readme/awk.png)](2020/day03/trees.awk) | [![Go](https://github.com/suve/advent-of-code/raw/master/.readme/go.png)](2019/day03/wires.go) | [![C](https://github.com/suve/advent-of-code/raw/master/.readme/c.png)](2018/day03/fabric.c) | [![Bash](https://github.com/suve/advent-of-code/raw/master/.readme/sh.png)](2017/day03/spiral-dist.sh) |
@@ -69,13 +69,13 @@ be broken, as in "it worked with my input" – but might fail with yours.
 
 | Language | Solutions | Percentage | Lines of code | Percentage |
 | :---: | ---: | ---: | ---: | ---: |
-| C | 61 | 24.7% | 4.7k | 27.8% |
-| PHP | 55 | 22.3% | 3.1k | 18.2% |
-| Bash | 32 | 13.0% | 1.2k | 7.2% |
-| Rust | 31 | 12.6% | 2.8k | 16.6% |
+| C | 61 | 24.6% | 4.7k | 27.8% |
+| PHP | 56 | 22.6% | 3.1k | 18.3% |
+| Bash | 32 | 12.9% | 1.2k | 7.2% |
+| Rust | 31 | 12.5% | 2.8k | 16.6% |
 | Awful | 17 | 6.9% | 1.1k | 6.3% |
 | Pascal | 16 | 6.5% | 1.6k | 9.5% |
-| Python | 14 | 5.7% | 1.2k | 7.0% |
+| Python | 14 | 5.6% | 1.2k | 7.0% |
 | AWK | 6 | 2.4% | 103 | 0.6% |
 | Go | 4 | 1.6% | 475 | 2.8% |
 | Java | 4 | 1.6% | 139 | 0.8% |
@@ -83,4 +83,4 @@ be broken, as in "it worked with my input" – but might fail with yours.
 | JavaScript | 2 | 0.8% | 75 | 0.4% |
 | SurgeScript | 2 | 0.8% | 74 | 0.4% |
 | C++ | 1 | 0.4% | 87 | 0.5% |
-| **Total** | 247 | — | 16.9k | — |
+| **Total** | 248 | — | 16.9k | — |
